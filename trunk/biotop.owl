@@ -1,0 +1,3445 @@
+<?xml version="1.0" encoding="UTF8"?>
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dcterms "http://purl.org/dc/terms/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY bfo "http://www.ifomis.org/bfo/1.0#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY snap "http://www.ifomis.org/bfo/1.0/snap#" >
+    <!ENTITY span "http://www.ifomis.org/bfo/1.0/span#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY ro "http://www.ifomis.org/obo/ro/1.0/light#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege-dc "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.ifomis.org/biotop/1.0#"
+     xml:base="http://www.ifomis.org/biotop/1.0"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:protege-dc="http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#"
+     xmlns:ro="http://www.ifomis.org/obo/ro/1.0/light#"
+     xmlns:snap="http://www.ifomis.org/bfo/1.0/snap#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:bfo="http://www.ifomis.org/bfo/1.0#"
+     xmlns:span="http://www.ifomis.org/bfo/1.0/span#"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="">
+        <owl:imports rdf:resource="http://www.ifomis.org/bfo/1.0"/>
+        <owl:imports rdf:resource="http://www.ifomis.org/obo/ro/1.0/light"/>
+    </owl:Ontology>
+    <owl:AllDifferent>
+        <owl:distinctMembers rdf:parseType="Collection"/>
+    </owl:AllDifferent>
+    <owl:Class rdf:ID="Adenine">
+        <rdfs:subClassOf rdf:resource="#HeterocyclicBase"/>
+        <owl:disjointWith rdf:resource="#Uracil"/>
+        <owl:disjointWith rdf:resource="#Thymin"/>
+        <owl:disjointWith rdf:resource="#Guanine"/>
+        <owl:disjointWith rdf:resource="#Cytosine"/>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfAdenine">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Adenine"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Adenine"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfAliphaticChain">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#AliphaticChain"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#AliphaticChain"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfAliphaticMediumChainStructure">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#AliphaticMediumChainStructure"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#AliphaticMediumChainStructure"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfAminoAcidMonomer">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#AminoAcidMonomer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#AminoAcidMonomer"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfAminoAcidSequence">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#AminoAcidSequence"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#AminoAcidSequence"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfAminoGroup">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#AminoGroup"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#AminoGroup"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfAromaticHydrocarbon">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#AromaticHydrocarbon"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#AromaticHydrocarbon"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfAtom">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Atom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Atom"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfBiologicalProcess">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#BiologicalProcess"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#BiologicalProcess"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfC10-24Chain">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#C10-24Chain"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#C10-24Chain"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfC5Chain">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#C5Chain"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#C5Chain"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfC6Chain">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#C6Chain"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#C6Chain"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCarbohydrate">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Carbohydrate"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Carbohydrate"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCarbonAtom">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#CarbonAtom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#CarbonAtom"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCarbonChain">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#CarbonChain"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#CarbonChain"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCarbonHydrogenHydroxySubstructure">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCarbonHydrogenSubstructure">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#CarbonHydrogenSubstructure"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#CarbonHydrogenSubstructure"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCarboxyGroup">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#CarboxyGroup"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#CarboxyGroup"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCell">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Cell"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Cell"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCellInVivo">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#CellInVivo"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#CellInVivo"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCellMembrane">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#CellMembrane"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#CellMembrane"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCellularComponent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#CellularComponent"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#CellularComponent"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfChromosome">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Chromosome"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Chromosome"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCompound">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Compound"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Compound"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCyclicAliphatic">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#CyclicAliphatic"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#CyclicAliphatic"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCytoplasm">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Cytoplasm"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Cytoplasm"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfCytosine">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Cytosine"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Cytosine"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfDeoxyribonucleotide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Deoxyribonucleotide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Deoxyribonucleotide"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfDeoxyribose">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Deoxyribose"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Deoxyribose"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfDNASequence">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#DNASequence"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#DNASequence"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfElectron">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Electron"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Electron"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfEntireDNAMolecule">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#EntireDNAMolecule"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#EntireDNAMolecule"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfEntireMolecularEntity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#EntireMolecularEntity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#EntireMolecularEntity"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfEntireOligopeptideMolecule">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#EntireOligopeptideMolecule"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#EntireOligopeptideMolecule"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfEntirePolypeptideMolecule">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#EntirePolypeptideMolecule"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#EntirePolypeptideMolecule"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfEntireProteinMolecule">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#EntireProteinMolecule"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#EntireProteinMolecule"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfEntireRNAMolecule">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#EntireRNAMolecule"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#EntireRNAMolecule"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfEukaryote">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Eukaryote"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Eukaryote"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfEukaryoticCell">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#EukaryoticCell"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#EukaryoticCell"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfFunctionalGroup">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#FunctionalGroup"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#FunctionalGroup"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfGlucose">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Glucose"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Glucose"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfGuanine">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Guanine"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Guanine"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfHeterocyclicBase">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#HeterocyclicBase"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#HeterocyclicBase"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfHexose">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Hexose"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Hexose"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfHydrocarbon">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Hydrocarbon"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Hydrocarbon"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfHydrogenAtom">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#HydrogenAtom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfHydroxyGroup">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#HydroxyGroup"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#HydroxyGroup"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfInorganicMolecularEntity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#InorganicMolecularEntity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#InorganicMolecularEntity"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfLipid">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Lipid"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Lipid"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfModifiedCell">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#ModifiedCell"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#ModifiedCell"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfMolecularEntity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#MolecularEntity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#MolecularEntity"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfMolecularGroup">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#MolecularGroup"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#MolecularGroup"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfMoleculeComplex">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#MoleculeComplex"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#MoleculeComplex"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfMonomer">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Monomer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Monomer"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfMonosaccharide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Monosaccharide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Monosaccharide"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfNeutron">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Neutron"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Neutron"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfNitrogenAtom">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#NitrogenAtom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#NitrogenAtom"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfNonStreoidLipid">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#NonStreoidLipid"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#NonStreoidLipid"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfNucleicAcid">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#NucleicAcid"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#NucleicAcid"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfNucleotide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Nucleotide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Nucleotide"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfNucleotideSequence">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#NucleotideSequence"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#NucleotideSequence"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfOligoOrPolymer">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#OligoOrPolymer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#OligoOrPolymer"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfOligosaccharide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Oligosaccharide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Oligosaccharide"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfOrganicMolecularEntity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#OrganicMolecularEntity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#OrganicMolecularEntity"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfOrganismPart">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#OrganismPart"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#OrganismPart"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfOxygenAtom">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#OxygenAtom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#OxygenAtom"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfPentose">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Pentose"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Pentose"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfPeptide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Peptide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Peptide"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfPhosphate">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Phosphate"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Phosphate"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfPhosphorusAtom">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#PhosphorusAtom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#PhosphorusAtom"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfPolyatomicEntity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#PolyatomicEntity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#PolyatomicEntity"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfPolynucleotide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Polynucleotide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Polynucleotide"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfPolysaccharide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Polysaccharide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Polysaccharide"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfProkaryoticCell">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#ProkaryoticCell"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#ProkaryoticCell"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfProteinComplex">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#ProteinComplex"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#ProteinComplex"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfProteinDomain">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#ProteinDomain"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#ProteinDomain"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfProteinSubstructure">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#ProteinSubstructure"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#ProteinSubstructure"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfProteinSubunit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#ProteinSubunit"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#ProteinSubunit"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfProtist">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Protist"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Protist"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfProton">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Proton"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Proton"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfRibonucleotide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Ribonucleotide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Ribonucleotide"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfRibose">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Ribose"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Ribose"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfRNASequence">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#RNASequence"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#RNASequence"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfSteroid">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Steroid"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Steroid"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfStructuralGroup">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#StructuralGroup"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#StructuralGroup"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfSubatomicParticle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#SubatomicParticle"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#SubatomicParticle"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfSulphurAtom">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#SulphurAtom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#SulphurAtom"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfThymin">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Thymin"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Thymin"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfUniCellularOrganism">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#UniCellularOrganism"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#UniCellularOrganism"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AggregateOfUracil">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Uracil"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Uracil"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="AliphaticChain">
+        <rdfs:subClassOf rdf:resource="#Hydrocarbon"/>
+        <owl:disjointWith rdf:resource="#AromaticHydrocarbon"/>
+        <owl:disjointWith rdf:resource="#CyclicAliphatic"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Hydrocarbon without rings</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="AliphaticMediumChainStructure">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom rdf:resource="#C10-24Chain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#AliphaticChain"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Hydrophobic Chain (length generally 10 - 24 C atoms) , such as constituting the &quot;tail&quot; of a fatty acid. May contain unsaturated segments</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="AminoAcidMonomer">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#AminoGroup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#CarboxyGroup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasPart"/>
+                <owl:someValuesFrom rdf:resource="#CarbonHydrogenSubstructure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#MolecularEntity"/>
+        <owl:disjointWith rdf:resource="#Nucleotide"/>
+        <owl:disjointWith rdf:resource="#HeterocyclicBase"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >ro:hasPart SOME CarbonHydrogenSubstructure AND
+
+((hasComponent MAX 2 CarboxyGroup) AND
+ (hasComponent MIN 1 CarboxyGroup) AND
+ (hasComponent EXACTLY 1 AminoGroup)) OR
+((hasComponent MAX 2 AminoGroup) AND
+ (hasComponent MIN 1 AminoGroup) AND
+ (hasComponent EXACTLY 1 CarboxyGroup))</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Amino Acids molecules or residues (residues as in peptide bonds)
+In chemistry, an amino acid is any molecule that contains both amine and carboxyl functional groups. However, in biochemistry, this more general term is frequently used to refer to alpha amino acids (amino acids in which the amino and carboxylate functionalities are attached to the same carbon, called &#945;&#8211;carbon).
+Amino Acids have at least one amino and one carboxy group. Those having two carboxy groups have only one amino group and vice versa</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="AminoAcidSequence">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom rdf:resource="#AminoAcidMonomer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#AminoAcidMonomer"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Peptide"/>
+        <owl:disjointWith rdf:resource="#Carbohydrate"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Chain of amino acids, joined by peptide bonds. Folded or unfolded.
+S: AminoAcidSequence</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="AminoGroup">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class rdf:about="#HydrogenAtom"/>
+                            <owl:Class rdf:about="#NitrogenAtom"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#FunctionalGroup"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#NitrogenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#C6Chain"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
+        <owl:disjointWith rdf:resource="#CarboxyGroup"/>
+        <owl:disjointWith rdf:resource="#HydroxyGroup"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenSubstructure"/>
+        <owl:disjointWith rdf:resource="#C5Chain"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hasComponent EXACTLY 1 NitrogenAtom AND
+
+hasComponent MAX 3 HydrogenAtom AND
+
+hasComponent MIN 1 HydrogenAtom AND
+
+hasComponent ONLY (NitrogenAtom OR
+                   HydrogenAtom)</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Amines are organic compounds and a type of functional group that contain nitrogen as the key atom.
+Isolated neutral or kationic amino group or amino group forming a peptide bond.   NH2 or NH3+</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="AmountOfMatter">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasGrain"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="#AmountOfMatter"/>
+                            </owl:Class>
+                            <owl:Class rdf:about="&snap;Object"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#PolyatomicEntity"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Aggregration of multiple interconnected components without clear identity and unity criteria.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Animal">
+        <rdfs:subClassOf rdf:resource="#Eukaryote"/>
+        <owl:disjointWith rdf:resource="#ModifiedCell"/>
+        <owl:disjointWith rdf:resource="#Protist"/>
+        <owl:disjointWith rdf:resource="#Plant"/>
+        <owl:disjointWith rdf:resource="#Fungus"/>
+    </owl:Class>
+    <owl:Class rdf:ID="AromaticHydrocarbon">
+        <rdfs:subClassOf rdf:resource="#Hydrocarbon"/>
+        <owl:disjointWith rdf:resource="#CyclicAliphatic"/>
+        <owl:disjointWith rdf:resource="#AliphaticChain"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Hydrocarbons which contain aromatic rings (benzene, naphtalin, toluene)</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Atom">
+        <rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#SubatomicParticle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:allValuesFrom rdf:resource="#SubatomicParticle"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#MolecularEntity"/>
+        <owl:disjointWith rdf:resource="#SubatomicParticle"/>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="BacterialCell">
+        <rdfs:subClassOf rdf:resource="#ProkaryoticCell"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Synonym: Bacterium
+Comment: We conceive organisms in a material sense. Therefore we do not assume any ontological difference between a monocellular organism and the cell it is made of.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="BacterialColony">
+        <rdfs:subClassOf rdf:resource="#PopulationOfBacterialCell"/>
+    </owl:Class>
+    <owl:Class rdf:ID="BiologicalColony">
+        <rdfs:subClassOf rdf:resource="#PopulationOfOrganism"/>
+    </owl:Class>
+    <owl:Class rdf:ID="BiologicalProcess">
+        <rdfs:subClassOf rdf:resource="&span;Process"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Process specific for biological systems</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="BodyFluid">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="#Organism"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;partOf"/>
+                        <owl:someValuesFrom rdf:resource="#Organism"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#WaterMolecule"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#HeterogenousStuff"/>
+    </owl:Class>
+    <owl:Class rdf:ID="C10-24Chain">
+        <rdfs:subClassOf rdf:resource="#CarbonChain"/>
+    </owl:Class>
+    <owl:Class rdf:ID="C5Chain">
+        <rdfs:subClassOf rdf:resource="#CarbonChain"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenSubstructure"/>
+        <owl:disjointWith rdf:resource="#C6Chain"/>
+        <owl:disjointWith rdf:resource="#AminoGroup"/>
+        <owl:disjointWith rdf:resource="#HydroxyGroup"/>
+        <owl:disjointWith rdf:resource="#CarboxyGroup"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hasComponent EXACTLY 5 CarbonAtom</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Backbone of Pentoses</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="C6Chain">
+        <rdfs:subClassOf rdf:resource="#CarbonChain"/>
+        <owl:disjointWith rdf:resource="#C5Chain"/>
+        <owl:disjointWith rdf:resource="#HydroxyGroup"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
+        <owl:disjointWith rdf:resource="#CarboxyGroup"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenSubstructure"/>
+        <owl:disjointWith rdf:resource="#AminoGroup"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Backbone of Hexoses</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hasComponent EXACTLY 6 CarbonAtom</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Carbohydrate">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="#Monosaccharide"/>
+                    <owl:Class rdf:about="#Oligosaccharide"/>
+                    <owl:Class rdf:about="#Polysaccharide"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#MolecularEntity"/>
+        <owl:disjointWith rdf:resource="#AminoAcidSequence"/>
+    </owl:Class>
+    <owl:Class rdf:ID="CarbonAtom">
+        <rdfs:subClassOf rdf:resource="#Atom"/>
+        <owl:disjointWith rdf:resource="#NitrogenAtom"/>
+        <owl:disjointWith rdf:resource="#SulphurAtom"/>
+        <owl:disjointWith rdf:resource="#OxygenAtom"/>
+        <owl:disjointWith rdf:resource="#HydrogenAtom"/>
+        <owl:disjointWith rdf:resource="#PhosphorusAtom"/>
+    </owl:Class>
+    <owl:Class rdf:ID="CarbonChain">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom rdf:resource="#CarbonAtom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#CarbonAtom"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#StructuralGroup"/>
+    </owl:Class>
+    <owl:Class rdf:ID="CarbonHydrogenHydroxySubstructure">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#OxygenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class rdf:about="#CarbonAtom"/>
+                            <owl:Class rdf:about="#HydrogenAtom"/>
+                            <owl:Class rdf:about="#OxygenAtom"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#StructuralGroup"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#CarbonAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#C5Chain"/>
+        <owl:disjointWith rdf:resource="#HydroxyGroup"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenSubstructure"/>
+        <owl:disjointWith rdf:resource="#C6Chain"/>
+        <owl:disjointWith rdf:resource="#CarboxyGroup"/>
+        <owl:disjointWith rdf:resource="#AminoGroup"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hasComponent EXACTLY 1 CarbonAtom AND
+
+hasComponent EXACTLY 2 HydrogenAtom AND
+
+hasComponent EXACTLY 1 OxygenAtom AND
+
+hasComponent ONLY (CarbonAtom OR
+                   HydrogenAtom OR
+                   OxygenAtom)</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >H-C-OH, the basic structure of carbohydrates</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="CarbonHydrogenSubstructure">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#CarbonAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#StructuralGroup"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class rdf:about="#CarbonAtom"/>
+                            <owl:Class rdf:about="#HydrogenAtom"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#CarboxyGroup"/>
+        <owl:disjointWith rdf:resource="#HydroxyGroup"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
+        <owl:disjointWith rdf:resource="#AminoGroup"/>
+        <owl:disjointWith rdf:resource="#C6Chain"/>
+        <owl:disjointWith rdf:resource="#C5Chain"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hasComponent EXACTLY 1 CarbonAtom AND
+
+hasComponent EXACTLY 1 HydrogenAtom AND
+
+hasComponent ONLY (CarbonAtom OR
+                   HydrogenAtom)</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Part of a molecule constituted by a (1-3 valued) carbon hydrogen bound. Traditional (fiat) criterion for distinguishing organic from inorganic compounds. Excludes certain carbon compounds such as HCN, CO2, traditionally considered inorganic. (
+(Could be enhanced by carbon tetrahalogen, traditionally considered organic compounds, but irrelevant for biology
+)</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="CarboxyGroup">
+        <rdfs:subClassOf rdf:resource="#FunctionalGroup"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#CarbonAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#OxygenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class rdf:about="#CarbonAtom"/>
+                            <owl:Class rdf:about="#HydrogenAtom"/>
+                            <owl:Class rdf:about="#OxygenAtom"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#C6Chain"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenSubstructure"/>
+        <owl:disjointWith rdf:resource="#C5Chain"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
+        <owl:disjointWith rdf:resource="#AminoGroup"/>
+        <owl:disjointWith rdf:resource="#HydroxyGroup"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hasComponent EXACTLY 1 CarbonAtom AND
+
+hasComponent EXACTLY 2 OxygenAtom AND
+
+hasComponent MAX 1 HydrogenAtom AND
+
+hasComponent ONLY (CarbonAtom OR
+                   OxygenAtom OR
+                   HydrogenAtom)</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string">COOH or COO-</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Cell">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#CellMembrane"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#CellularComponent"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="#Cell"/>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="#Cytoplasm"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Compound"/>
+        <owl:disjointWith rdf:resource="#CellularComponent"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Constituting unit of an organism</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="CellInVivo">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="#Organism"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="#Organism"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#Cell"/>
+        <owl:disjointWith rdf:resource="#ModifiedCell"/>
+    </owl:Class>
+    <owl:Class rdf:ID="CellMembrane">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasGrain"/>
+                <owl:someValuesFrom rdf:resource="#Lipid"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#CellularComponent"/>
+    </owl:Class>
+    <owl:Class rdf:ID="CellularComponent">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="#Organism"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;properPartOf"/>
+                        <owl:someValuesFrom rdf:resource="#Organism"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#Compound"/>
+        <owl:disjointWith rdf:resource="#Organism"/>
+        <owl:disjointWith rdf:resource="#Cell"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Components which only can be formed inside living cells but which may survive their host cell.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Chromosome">
+        <rdfs:subClassOf rdf:resource="#MoleculeComplex"/>
+    </owl:Class>
+    <owl:ObjectProperty rdf:ID="componentOf">
+        <rdfs:subPropertyOf rdf:resource="&ro;properPartOf"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Components are those (first-order) parts which partition a compound. The whole is exactly the mereological sum of its components. A loss of a component affects the sortality of the compound.
+Reciprocal relation:  zu hasComponent</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Class rdf:ID="Compound">
+        <rdfs:subClassOf rdf:resource="#PolyatomicEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom rdf:resource="#EntireMolecularEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >An non-molecular object which has different parts and which changes its ontological nature if sub
+divided</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="CyclicAliphatic">
+        <rdfs:subClassOf rdf:resource="#Hydrocarbon"/>
+        <owl:disjointWith rdf:resource="#AromaticHydrocarbon"/>
+        <owl:disjointWith rdf:resource="#AliphaticChain"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Hydrocarbon with rings which are not aromatic rings (Cyclohexan)</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Cytoplasm">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasPart"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#WaterMolecule"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#CellularComponent"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Cytosine">
+        <rdfs:subClassOf rdf:resource="#HeterocyclicBase"/>
+        <owl:disjointWith rdf:resource="#Uracil"/>
+        <owl:disjointWith rdf:resource="#Thymin"/>
+        <owl:disjointWith rdf:resource="#Guanine"/>
+        <owl:disjointWith rdf:resource="#Adenine"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Deoxyribonucleotide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <owl:Class rdf:about="#Deoxyribose"/>
+                                    <owl:Class rdf:about="#HeterocyclicBase"/>
+                                    <owl:Class rdf:about="#Phosphate"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#Deoxyribose"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#HeterocyclicBase"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#Phosphate"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Nucleotide"/>
+        <owl:disjointWith rdf:resource="#Ribonucleotide"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Deoxyribose">
+        <rdfs:subClassOf rdf:resource="#Pentose"/>
+        <owl:disjointWith rdf:resource="#Ribose"/>
+    </owl:Class>
+    <owl:Class rdf:ID="DNASequence">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom rdf:resource="#Deoxyribonucleotide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#Deoxyribonucleotide"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#NucleotideSequence"/>
+        <owl:disjointWith rdf:resource="#RNASequence"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >DNA (deoxyribonucleic acid) is a chain of deoxyribonucleotides.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Electron">
+        <rdfs:subClassOf rdf:resource="#SubatomicParticle"/>
+        <owl:disjointWith rdf:resource="#Neutron"/>
+        <owl:disjointWith rdf:resource="#Proton"/>
+    </owl:Class>
+    <owl:Class rdf:ID="EntireDNAMolecule">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&ro;properPartOf"/>
+                                <owl:someValuesFrom rdf:resource="#MolecularEntity"/>
+                            </owl:Restriction>
+                        </owl:complementOf>
+                    </owl:Class>
+                    <owl:Class rdf:about="#NucleicAcid"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasPart"/>
+                        <owl:someValuesFrom rdf:resource="#DNASequence"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="#EntireRNAMolecule"/>
+    </owl:Class>
+    <owl:Class rdf:ID="EntireMolecularEntity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="#MolecularEntity"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&ro;properPartOf"/>
+                                <owl:someValuesFrom rdf:resource="#MolecularEntity"/>
+                            </owl:Restriction>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="#MolecularGroup"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Separately distinguishable molecular structure, not part of another molecular structure. Atoms are not considered molecular structures. The hierarchy of entire entities mirrors the hierarchy of structures</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="EntireOligopeptideMolecule">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom rdf:resource="#AminoAcidMonomer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#AminoAcidMonomer"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="#Peptide"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="#EntireProteinMolecule"/>
+        <owl:disjointWith rdf:resource="#EntirePolypeptideMolecule"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hasComponent max 10 AminoAcidMonomer</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Amino Acid Polymer up to 10 monomers</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="EntirePolypeptideMolecule">
+        <rdfs:subClassOf rdf:resource="#Peptide"/>
+        <owl:disjointWith rdf:resource="#EntireProteinMolecule"/>
+        <owl:disjointWith rdf:resource="#EntireOligopeptideMolecule"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Peptide AND
+
+hasComponent MIN 11 AminoAcidMonomer AND
+
+NOT (ro:properPartOf SOME MolecularEntity) AND
+
+hasComponent ONLY AminoAcidMonomer AND
+
+hasComponent MAX 100 AminoAcidMonomer</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Amino Acid Polymer from 11 to 100 monomers</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="EntireProteinMolecule">
+        <rdfs:subClassOf rdf:resource="#Peptide"/>
+        <owl:disjointWith rdf:resource="#EntirePolypeptideMolecule"/>
+        <owl:disjointWith rdf:resource="#EntireOligopeptideMolecule"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Peptide AND
+
+hasComponent MIN 101 AminoAcidMonomer AND
+
+NOT (ro:properPartOf SOME MolecularEntity)</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Amino Acid Polymer longer than 100 monomers</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="EntireRNAMolecule">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&ro;properPartOf"/>
+                                <owl:someValuesFrom rdf:resource="#MolecularEntity"/>
+                            </owl:Restriction>
+                        </owl:complementOf>
+                    </owl:Class>
+                    <owl:Class rdf:about="#NucleicAcid"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasPart"/>
+                        <owl:someValuesFrom rdf:resource="#RNASequence"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="#EntireDNAMolecule"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Eukaryote">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class rdf:about="#EukaryoticCell"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                                <owl:someValuesFrom rdf:resource="#EukaryoticCell"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                    <owl:Class rdf:about="#Organism"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A eukaryote is an organism with a complex cell or cells, in which the genetic material is organized into a membrane-bound nucleus or nuclei. Most Eukaryots are multicellular, haowever, there are some which are always unicellular (protists, some fungi), but there are also unicellular developmental stages (zygotes) of plants and animals.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="EukaryoticCell">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class rdf:about="#Eukaryote"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&ro;properPartOf"/>
+                                <owl:someValuesFrom rdf:resource="#Eukaryote"/>
+                            </owl:Restriction>
+                        </owl:unionOf>
+                    </owl:Class>
+                    <owl:Class rdf:about="#Cell"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="FunctionalGroup">
+        <rdfs:subClassOf rdf:resource="#MolecularGroup"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Functional groups are specific groups of atoms within molecules, that are responsible for the characteristic chemical reactions of those molecules.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Fungus">
+        <rdfs:subClassOf rdf:resource="#Eukaryote"/>
+        <owl:disjointWith rdf:resource="#Protist"/>
+        <owl:disjointWith rdf:resource="#Plant"/>
+        <owl:disjointWith rdf:resource="#Animal"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Glucose">
+        <rdfs:subClassOf rdf:resource="#Hexose"/>
+    </owl:Class>
+    <owl:ObjectProperty rdf:ID="grainOf">
+        <rdfs:subPropertyOf rdf:resource="&ro;properPartOf"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Grains are the constitutent parts of Pluralities. They are of the same sort. Generally pluralities have a high number of grains. The loss of a grain has no effect on the sortality of the identity of the plurality.
+Reciprocal relation: hasGrain.</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:Class rdf:ID="Guanine">
+        <rdfs:subClassOf rdf:resource="#HeterocyclicBase"/>
+        <owl:disjointWith rdf:resource="#Uracil"/>
+        <owl:disjointWith rdf:resource="#Thymin"/>
+        <owl:disjointWith rdf:resource="#Cytosine"/>
+        <owl:disjointWith rdf:resource="#Adenine"/>
+    </owl:Class>
+    <owl:ObjectProperty rdf:ID="hasComponent">
+        <rdfs:subPropertyOf rdf:resource="&ro;hasProperPart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >-eigentlich invers zu componentOf</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:ID="hasGrain">
+        <rdfs:subPropertyOf rdf:resource="&ro;hasProperPart"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >-eigentlich invers zu grainOf</rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:ID="hasInherent">
+        <rdfs:domain rdf:resource="&snap;IndependentContinuant"/>
+        <rdfs:range rdf:resource="&snap;DependentContinuant"/>
+    </owl:ObjectProperty>
+    <owl:Class rdf:ID="HeterocyclicBase">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="#CarbonHydrogenSubstructure"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="#NitrogenAtom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="#OxygenAtom"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#MolecularEntity"/>
+        <owl:disjointWith rdf:resource="#Nucleotide"/>
+        <owl:disjointWith rdf:resource="#AminoAcidMonomer"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Organic compounds that contain a ring structure containing N as proton receptor. Important parts of DNA and RNA molecules</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="HeterogenousStuff">
+        <rdfs:subClassOf rdf:resource="#AmountOfMatter"/>
+        <owl:disjointWith rdf:resource="#HomogenousStuff"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Composed by components of different kinds</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Hexose">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom rdf:resource="#HydroxyGroup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom rdf:resource="#CarbonHydrogenSubstructure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#Monosaccharide"/>
+        <owl:disjointWith rdf:resource="#Pentose"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hasComponent exactly 1 C6Chain</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="HomogenousStuff">
+        <rdfs:subClassOf rdf:resource="#AmountOfMatter"/>
+        <owl:disjointWith rdf:resource="#HeterogenousStuff"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Composed by granular components of the same kind</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Hydrocarbon">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <owl:Class rdf:about="#CarbonAtom"/>
+                                    <owl:Class rdf:about="#CarbonHydrogenSubstructure"/>
+                                    <owl:Class rdf:about="#HydrogenAtom"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="#MolecularEntity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="#CarbonAtom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Compounds consisting of carbon and hydrogen only.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="HydrogenAtom">
+        <rdfs:subClassOf rdf:resource="#Atom"/>
+        <owl:disjointWith rdf:resource="#NitrogenAtom"/>
+        <owl:disjointWith rdf:resource="#CarbonAtom"/>
+        <owl:disjointWith rdf:resource="#OxygenAtom"/>
+        <owl:disjointWith rdf:resource="#SulphurAtom"/>
+        <owl:disjointWith rdf:resource="#PhosphorusAtom"/>
+    </owl:Class>
+    <owl:Class rdf:ID="HydroxyGroup">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#OxygenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class rdf:about="#HydrogenAtom"/>
+                            <owl:Class rdf:about="#OxygenAtom"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#FunctionalGroup"/>
+        <owl:disjointWith rdf:resource="#AminoGroup"/>
+        <owl:disjointWith rdf:resource="#C5Chain"/>
+        <owl:disjointWith rdf:resource="#CarboxyGroup"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
+        <owl:disjointWith rdf:resource="#C6Chain"/>
+        <owl:disjointWith rdf:resource="#CarbonHydrogenSubstructure"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hasComponent EXACTLY 1 OxygenAtom AND
+
+hasComponent EXACTLY 1 HydrogenAtom AND
+
+hasComponent ONLY (OxygenAtom OR
+                   HydrogenAtom)</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string">OH or OH2+</rdfs:comment>
+    </owl:Class>
+    <owl:ObjectProperty rdf:ID="inheresIn">
+        <rdfs:domain rdf:resource="&snap;DependentContinuant"/>
+        <rdfs:range rdf:resource="&snap;IndependentContinuant"/>
+    </owl:ObjectProperty>
+    <owl:Class rdf:ID="InorganicMolecularEntity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="#MolecularEntity"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                                <owl:someValuesFrom rdf:resource="#CarbonHydrogenSubstructure"/>
+                            </owl:Restriction>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="#OrganicMolecularEntity"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Substances which do not include carbon and its derivatives as their principal elements. However, carbides, carbonates, cyanides, cyanates, and carbon disulfide are included in this class.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Lipid">
+        <rdfs:subClassOf rdf:resource="#MolecularEntity"/>
+    </owl:Class>
+    <owl:Class rdf:ID="ModifiedCell">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;properPartOf"/>
+                        <owl:someValuesFrom rdf:resource="#Organism"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="#CellInVivo"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#Cell"/>
+        <owl:disjointWith rdf:resource="#Animal"/>
+        <owl:disjointWith rdf:resource="#CellInVivo"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Cells that grow and replicate continuously outside the living organism.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="MolecularEntity">
+        <rdfs:subClassOf rdf:resource="#PolyatomicEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom rdf:resource="#Atom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#Atom"/>
+        <owl:disjointWith rdf:resource="#SubatomicParticle"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A molecular structure is a self connected
+ compound of two atoms or more which exhibit at least one covalent bound. Molecular entities can be isolated molecules or parts of molecules (groups, residue). They may be electrically neutral or not.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="MolecularFunction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#inheresIn"/>
+                        <owl:someValuesFrom rdf:resource="#MolecularEntity"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;Function"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Inherent function of a molecule</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="MolecularGroup">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom rdf:resource="#Atom"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="#MolecularEntity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;properPartOf"/>
+                        <owl:someValuesFrom rdf:resource="#EntireMolecularEntity"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="#EntireMolecularEntity"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Linked collection of atoms within a molcular entity. They cannot exist by themselves.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="MoleculeComplex">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom rdf:resource="#EntireMolecularEntity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#EntireMolecularEntity"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Compound"/>
+        <owl:disjointWith rdf:resource="#Organism"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Particle that consists of entire molecules</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Monomer">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <owl:Class rdf:about="#Atom"/>
+                                    <owl:Class rdf:about="#MolecularGroup"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#MolecularGroup"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="#MolecularEntity"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="#OligoOrPolymer"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Monomers can be described as constituted by molecularl groups. They are not repetitive and can constitute the building blocks of Polymers</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Monosaccharide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="#Hexose"/>
+                    <owl:Class rdf:about="#Pentose"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Carbohydrate"/>
+        <owl:disjointWith rdf:resource="#Polysaccharide"/>
+        <owl:disjointWith rdf:resource="#Oligosaccharide"/>
+    </owl:Class>
+    <owl:Class rdf:ID="MulticellularOrganism">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="#Organism"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="#Cell"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="Neutron">
+        <rdfs:subClassOf rdf:resource="#SubatomicParticle"/>
+        <owl:disjointWith rdf:resource="#Electron"/>
+        <owl:disjointWith rdf:resource="#Proton"/>
+    </owl:Class>
+    <owl:Class rdf:ID="NitrogenAtom">
+        <rdfs:subClassOf rdf:resource="#Atom"/>
+        <owl:disjointWith rdf:resource="#CarbonAtom"/>
+        <owl:disjointWith rdf:resource="#OxygenAtom"/>
+        <owl:disjointWith rdf:resource="#HydrogenAtom"/>
+        <owl:disjointWith rdf:resource="#PhosphorusAtom"/>
+        <owl:disjointWith rdf:resource="#SulphurAtom"/>
+    </owl:Class>
+    <owl:Class rdf:ID="NonStreoidLipid">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom rdf:resource="#AliphaticMediumChainStructure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#Lipid"/>
+        <owl:disjointWith rdf:resource="#Steroid"/>
+    </owl:Class>
+    <owl:Class rdf:ID="NucleicAcid">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom rdf:resource="#Nucleotide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#Nucleotide"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="#MolecularEntity"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A nucleic acid is a complex, high-molecular-weight biochemical macromolecule composed of nucleotide chains that convey genetic information</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Nucleotide">
+        <rdfs:subClassOf rdf:resource="#MolecularEntity"/>
+        <owl:disjointWith rdf:resource="#HeterocyclicBase"/>
+        <owl:disjointWith rdf:resource="#AminoAcidMonomer"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >NEC+SUFF
+
+hasComponent EXACTLY 1 HeterocyclicBase AND
+
+hasComponent EXACTLY 1 Phosphate AND
+
+hasComponent ONLY (Phosphate OR
+                   Ribose OR
+                   HeterocyclicBase) AND
+
+hasComponent EXACTLY 1 Pentose</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="NucleotideSequence">
+        <rdfs:subClassOf rdf:resource="#NucleicAcid"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Synonym: NucleicAcid
+Synonym: NucleotidePolymer</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="OligoOrPolymer">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom rdf:resource="#Monomer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#Monomer"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="#MolecularEntity"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="#Monomer"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A OligoOrPolymer macromolecular structure is a molecule of moderate to high relative molecular mass, the structure of which essentially comprises the multiple repetition (n &gt;= 2) of units derived from molecules of low relative molecular mass.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Oligosaccharide">
+        <rdfs:subClassOf rdf:resource="#Carbohydrate"/>
+        <owl:disjointWith rdf:resource="#Monosaccharide"/>
+        <owl:disjointWith rdf:resource="#Polysaccharide"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Carbohydrate AND
+
+hasComponent MIN 2 Monosaccharide AND
+
+hasComponent MAX 9 Monosaccharide AND
+
+hasComponent ONLY Monomer</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="OrganicMolecularEntity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="#MolecularEntity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasPart"/>
+                        <owl:someValuesFrom rdf:resource="#CarbonHydrogenSubstructure"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="#InorganicMolecularEntity"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Substances containing carbon and its derivatives as their prinicipal elements, usually combined with itself and with atoms of one or more other element such as hydrogen, oxygen, nitrogen, sulfur, phosphorus, chlorine, or fluorine. They exist in either carbon chain or carbon ring form. Excludes carbides, carbonates and carbon oxides.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Organism">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="#Eukaryote"/>
+                    <owl:Class rdf:about="#MulticellularOrganism"/>
+                    <owl:Class rdf:about="#UniCellularOrganism"/>
+                    <owl:Class rdf:about="#Virus"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Compound"/>
+        <owl:disjointWith rdf:resource="#MoleculeComplex"/>
+        <owl:disjointWith rdf:resource="#CellularComponent"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Living complex biological system which functions as a stable whole. In contrast to colonial organisms their components generally cannot survive on their own. We conceive organisms in a material sense. Therefore we do not assume any ontological difference between a unicellular organism and the cell it is made of.
+&quot;Colonial Organism&quot; are not considered Organisms</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="OrganismPart">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="#MulticellularOrganism"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;properPartOf"/>
+                        <owl:someValuesFrom rdf:resource="#MulticellularOrganism"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#PolyatomicEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom rdf:resource="#Tissue"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A well defined and circumscribed subdivision of an organism, not any arbitrary part. Macroscopic organism parts may be delimited mainly by natural boundaries, but always exhibit at least small regions of fiat boundaries. An organism part may derive from an organism, i.e. it may continue to exist even when the organism does not exist any longer.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="OxygenAtom">
+        <rdfs:subClassOf rdf:resource="#Atom"/>
+        <owl:disjointWith rdf:resource="#NitrogenAtom"/>
+        <owl:disjointWith rdf:resource="#SulphurAtom"/>
+        <owl:disjointWith rdf:resource="#PhosphorusAtom"/>
+        <owl:disjointWith rdf:resource="#HydrogenAtom"/>
+        <owl:disjointWith rdf:resource="#CarbonAtom"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Pentose">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom rdf:resource="#HydroxyGroup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom rdf:resource="#CarbonHydrogenSubstructure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#Monosaccharide"/>
+        <owl:disjointWith rdf:resource="#Hexose"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >hasComponent exactly 1 C5Chain</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Peptide">
+        <rdfs:subClassOf rdf:resource="#MolecularEntity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class rdf:about="#AminoAcidMonomer"/>
+                            <owl:Class rdf:about="#AminoAcidSequence"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >We here use the term peptide in the most general sense, viz. a oligo or polymer made out of amino acids.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Phosphate">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <owl:Class rdf:about="#HydrogenAtom"/>
+                                    <owl:Class rdf:about="#OxygenAtom"/>
+                                    <owl:Class rdf:about="#PhosphorusAtom"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#OxygenAtom"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#PhosphorusAtom"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="#MolecularEntity"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Phosphate is a salt of phosphoric acid or a functional group on organic compounds</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="PhosphorusAtom">
+        <rdfs:subClassOf rdf:resource="#Atom"/>
+        <owl:disjointWith rdf:resource="#NitrogenAtom"/>
+        <owl:disjointWith rdf:resource="#HydrogenAtom"/>
+        <owl:disjointWith rdf:resource="#CarbonAtom"/>
+        <owl:disjointWith rdf:resource="#OxygenAtom"/>
+        <owl:disjointWith rdf:resource="#SulphurAtom"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Plant">
+        <rdfs:subClassOf rdf:resource="#Eukaryote"/>
+        <owl:disjointWith rdf:resource="#Fungus"/>
+        <owl:disjointWith rdf:resource="#Animal"/>
+        <owl:disjointWith rdf:resource="#Protist"/>
+    </owl:Class>
+    <owl:Class rdf:ID="PolyatomicEntity">
+        <rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Polynucleotide">
+        <rdfs:subClassOf rdf:resource="#NucleicAcid"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Comment: articficially generated NucleotidePolymer</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Not clear whether only artificially generated</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Polysaccharide">
+        <rdfs:subClassOf rdf:resource="#Carbohydrate"/>
+        <owl:disjointWith rdf:resource="#Oligosaccharide"/>
+        <owl:disjointWith rdf:resource="#Monosaccharide"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Carbohydrate AND
+
+hasComponent MIN 10 Monosaccharide AND
+
+hasComponent ONLY Monomer</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="PopulationOfAnimal">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Animal"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Animal"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="PopulationOfBacterialCell">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#BacterialCell"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#BacterialCell"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="PopulationOfFungus">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Fungus"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Fungus"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="PopulationOfMulticellularOrganism">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#MulticellularOrganism"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#MulticellularOrganism"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="PopulationOfOrganism">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Organism"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Organism"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="PopulationOfPlant">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Plant"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Plant"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="PopulationOfVirus">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#Virus"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#Virus"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="PopulationOfYeastCell">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:allValuesFrom rdf:resource="#YeastCell"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasGrain"/>
+                        <owl:someValuesFrom rdf:resource="#YeastCell"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="&snap;ObjectAggregate"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:ID="ProkaryoticCell">
+        <rdfs:subClassOf rdf:resource="#UniCellularOrganism"/>
+        <owl:disjointWith rdf:resource="#YeastCell"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Synonym: Prokaryote
+Comment: We conceive organisms in a material sense. Therefore we do not assume any ontological difference between a monocellular organism and the cell it is made of.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="ProteinComplex">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <owl:Class rdf:about="#Atom"/>
+                                    <owl:Class rdf:about="#EntireProteinMolecule"/>
+                                    <owl:Class rdf:about="#Monomer"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#EntireProteinMolecule"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#MoleculeComplex"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Mostly only proteins, but composition with other molecules possible (e.g. Fe -&gt; Hemoglobin)</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="ProteinDomain">
+        <rdfs:subClassOf rdf:resource="#Peptide"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasPart"/>
+                <owl:someValuesFrom rdf:resource="#AminoAcidSequence"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;partOf"/>
+                <owl:someValuesFrom rdf:resource="#EntireProteinMolecule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Structural domain: Smallest element of protein tertiary structure that is self-stabilizing and often folds independently of the rest of the amino acid chain. It may contain one or more structural motives (ProteinSubstructure).
+A protein domain typically has its own function, the overall function of the protein results from  the composition of the functions of all of  its structural domains.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="ProteinFunction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#inheresIn"/>
+                        <owl:someValuesFrom rdf:resource="#Peptide"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="#MolecularFunction"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >inherent Function of a protein or a part of it:corresponds to GO: molecular function</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="ProteinSubstructure">
+        <rdfs:subClassOf rdf:resource="#Peptide"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasPart"/>
+                <owl:someValuesFrom rdf:resource="#AminoAcidSequence"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;partOf"/>
+                <owl:someValuesFrom rdf:resource="#EntireProteinMolecule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A secondary substructure of a protein (protein Motif)</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="ProteinSubunit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#componentOf"/>
+                        <owl:someValuesFrom rdf:resource="#ProteinComplex"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="#EntireProteinMolecule"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A protein molecule that assembles with other protein molecules to form a protein complex.
+May have its own function. However, most proteinsubunits do not gain functionality until associated with the other subunits.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Protist">
+        <rdfs:subClassOf rdf:resource="#Eukaryote"/>
+        <owl:disjointWith rdf:resource="#Animal"/>
+        <owl:disjointWith rdf:resource="#Plant"/>
+        <owl:disjointWith rdf:resource="#Fungus"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Proton">
+        <rdfs:subClassOf rdf:resource="#SubatomicParticle"/>
+        <owl:disjointWith rdf:resource="#Neutron"/>
+        <owl:disjointWith rdf:resource="#Electron"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Ribonucleotide">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <owl:Class rdf:about="#HeterocyclicBase"/>
+                                    <owl:Class rdf:about="#Phosphate"/>
+                                    <owl:Class rdf:about="#Ribose"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#HeterocyclicBase"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#Phosphate"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#Ribose"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#Nucleotide"/>
+        <owl:disjointWith rdf:resource="#Deoxyribonucleotide"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Ribose">
+        <rdfs:subClassOf rdf:resource="#Pentose"/>
+        <owl:disjointWith rdf:resource="#Deoxyribose"/>
+    </owl:Class>
+    <owl:Class rdf:ID="RNASequence">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:allValuesFrom rdf:resource="#Ribonucleotide"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#Ribonucleotide"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="#NucleotideSequence"/>
+        <owl:disjointWith rdf:resource="#DNASequence"/>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="&ro;derivesFrom">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="&ro;hasProperPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="&ro;properPartOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </owl:ObjectProperty>
+    <owl:Class rdf:ID="Steroid">
+        <rdfs:subClassOf rdf:resource="#Lipid"/>
+        <owl:disjointWith rdf:resource="#NonStreoidLipid"/>
+    </owl:Class>
+    <owl:Class rdf:ID="StructuralGroup">
+        <rdfs:subClassOf rdf:resource="#MolecularGroup"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Structural Groups are specific constellations of atoms within molecules which are relevant for the classification of those compounds, e.g. Pentoses have a 5-C-Chain, Hexoses have a 6-C-Chain</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="SubatomicParticle">
+        <rdfs:subClassOf rdf:resource="&snap;IndependentContinuant"/>
+        <owl:disjointWith rdf:resource="#MolecularEntity"/>
+        <owl:disjointWith rdf:resource="#Atom"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Parts of Atoms</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="SulphurAtom">
+        <rdfs:subClassOf rdf:resource="#Atom"/>
+        <owl:disjointWith rdf:resource="#OxygenAtom"/>
+        <owl:disjointWith rdf:resource="#PhosphorusAtom"/>
+        <owl:disjointWith rdf:resource="#HydrogenAtom"/>
+        <owl:disjointWith rdf:resource="#NitrogenAtom"/>
+        <owl:disjointWith rdf:resource="#CarbonAtom"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Thymin">
+        <rdfs:subClassOf rdf:resource="#HeterocyclicBase"/>
+        <owl:disjointWith rdf:resource="#Uracil"/>
+        <owl:disjointWith rdf:resource="#Guanine"/>
+        <owl:disjointWith rdf:resource="#Cytosine"/>
+        <owl:disjointWith rdf:resource="#Adenine"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Tissue">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="#Organism"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;partOf"/>
+                        <owl:someValuesFrom rdf:resource="#Organism"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#HeterogenousStuff"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasGrain"/>
+                <owl:someValuesFrom rdf:resource="#Cell"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasGrain"/>
+                <owl:someValuesFrom rdf:resource="#EntireMolecularEntity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:versionInfo rdf:datatype="&xsd;string"
+            >TODO: CLARIFY THE DEFINITION OF TISSUE</owl:versionInfo>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Aggregate of an arbitrary number of congeneric cells  (cells with identical specialized characteristics), embedded into an amount of matter (matrix) that work together to perform a specific function.</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="UniCellularOrganism">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#CellMembrane"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="#hasComponent"/>
+                        <owl:someValuesFrom rdf:resource="#CellularComponent"/>
+                    </owl:Restriction>
+                    <owl:Class rdf:about="#Organism"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="#Cell"/>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="#Cytoplasm"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:label rdf:datatype="&xsd;string"></rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="Uracil">
+        <rdfs:subClassOf rdf:resource="#HeterocyclicBase"/>
+        <owl:disjointWith rdf:resource="#Thymin"/>
+        <owl:disjointWith rdf:resource="#Guanine"/>
+        <owl:disjointWith rdf:resource="#Cytosine"/>
+        <owl:disjointWith rdf:resource="#Adenine"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Virus">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&ro;hasPart"/>
+                                <owl:someValuesFrom rdf:resource="#Cell"/>
+                            </owl:Restriction>
+                        </owl:complementOf>
+                    </owl:Class>
+                    <owl:Class rdf:about="#Organism"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Organism und &apos;not hasProperPart ...&apos;: in suff?</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:ID="WaterMolecule">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class rdf:about="#HydrogenAtom"/>
+                            <owl:Class rdf:about="#OxygenAtom"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ro;hasProperPart"/>
+                <owl:someValuesFrom rdf:resource="#HydroxyGroup"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#OxygenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasComponent"/>
+                <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="#MolecularEntity"/>
+    </owl:Class>
+    <owl:Class rdf:ID="YeastCell">
+        <rdfs:subClassOf rdf:resource="#EukaryoticCell"/>
+        <rdfs:subClassOf rdf:resource="#Fungus"/>
+        <owl:disjointWith rdf:resource="#ProkaryoticCell"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Comment: We conceive organisms in a material sense. Therefore we do not assume any ontological difference between a monocellular organism and the cell it is made of.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
