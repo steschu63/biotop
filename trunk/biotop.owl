@@ -1,36 +1,53 @@
 <?xml version="1.0" encoding="UTF8"?>
 
 <!DOCTYPE rdf:RDF [
-    <!ENTITY dcterms "http://purl.org/dc/terms/" >
-    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY bfo "http://www.ifomis.org/bfo/1.0#" >
+    <!ENTITY ifomis "http://www.ifomis.org" >
+    <!ENTITY base "&ifomis;/biotop/1.0">
+    <!ENTITY biotop "&base;#">
+	<!ENTITY bfo "&ifomis;/bfo/1.0#">
+    <!ENTITY snap "&ifomis;/bfo/1.0/snap#">
+    <!ENTITY span "&ifomis;/bfo/1.0/span#">
+    <!ENTITY ro "&ifomis;/obo/ro/1.0/light#" >
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
-    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
-    <!ENTITY snap "http://www.ifomis.org/bfo/1.0/snap#" >
-    <!ENTITY span "http://www.ifomis.org/bfo/1.0/span#" >
-    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
-    <!ENTITY ro "http://www.ifomis.org/obo/ro/1.0/light#" >
-    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY protege-dc "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#" >
+    <!ENTITY protege-dc "http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#" >	
+	<!ENTITY w3 "http://www.w3.org">
+    <!ENTITY owl "&w3;/2002/07/owl#">
+    <!ENTITY rdf "&w3;/1999/02/22-rdf-syntax-ns#">
+    <!ENTITY rdfs "&w3;/2000/01/rdf-schema#">
+    <!ENTITY xsd "&w3;/2001/XMLSchema#">
 ]>
 
 
-<rdf:RDF xmlns="http://www.ifomis.org/biotop/1.0#"
-     xml:base="http://www.ifomis.org/biotop/1.0"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:protege-dc="http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl#"
-     xmlns:ro="http://www.ifomis.org/obo/ro/1.0/light#"
-     xmlns:snap="http://www.ifomis.org/bfo/1.0/snap#"
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:bfo="http://www.ifomis.org/bfo/1.0#"
-     xmlns:span="http://www.ifomis.org/bfo/1.0/span#"
-     xmlns:dcterms="http://purl.org/dc/terms/">
+<rdf:RDF xmlns="&biotop;"
+     xmlns:biotop="&biotop;"
+     xmlns:bfo="&bfo;"
+     xmlns:snap="&snap;"
+     xmlns:span="&span;"
+     xmlns:dc="&dc;"
+     xmlns:protege-dc="&protege-dc;"
+     xmlns:ro="&ro;"
+     xmlns:owl="&owl;"
+     xmlns:rdf="&rdf;"
+     xmlns:rdfs="&rdfs;"
+     xmlns:xsd="&xsd;"
+	 xml:base="&base;">
     <owl:Ontology rdf:about="">
-        <owl:imports rdf:resource="http://www.ifomis.org/bfo/1.0"/>
-        <owl:imports rdf:resource="http://www.ifomis.org/obo/ro/1.0/light"/>
+		<dc:title rdf:datatype="&xsd;string">BioTop</dc:title>
+		<dc:creator rdf:datatype="&xsd;string">Stefan Schulz</dc:creator>
+		<dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
+		<dc:creator rdf:datatype="&xsd;string">Elena Beisswanger</dc:creator>
+		<dc:publisher rdf:datatype="&xsd;string">University Hospital Freiburg - Medical Informatics Department</dc:publisher>
+		<dc:publisher rdf:datatype="&xsd;string">Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
+		<dc:publisher rdf:datatype="&xsd;string">Jena University Language and Information Engineering (JULIE) Lab</dc:publisher>
+		<dc:identifier rdf:datatype="&xsd;string">&base;</dc:identifier>
+		<dc:format rdf:datatype="&xsd;string">application/rdf+xml</dc:format>
+		<dc:language rdf:datatype="&xsd;string">en</dc:language>
+		<dc:source rdf:datatype="&xsd;string">Stefan Schulz, Elena Beisswanger, Udo Hahn, Joachim Wermter, Holger Stenzhorn and Anand Kumar: "From GENIA to BioTop - Towards a top-level Ontology for Biology"</dc:source>
+		<dc:source rdf:datatype="&xsd;string">Stefan Schulz, Elena Beisswanger, Joachim Wermter and Udo Hahn: "Towards an Upper Level Ontology for Molecular Biology"</dc:source>
+		<dc:date rdf:datatype="&xsd;date">2007-02-14</dc:date>
+		<owl:versionInfo rdf:datatype="&xsd;string">1.0</owl:versionInfo>
+        <owl:imports rdf:resource="&bfo;"/>
+        <owl:imports rdf:resource="&ro;"/>
     </owl:Ontology>
     <owl:AllDifferent>
         <owl:distinctMembers rdf:parseType="Collection"/>
