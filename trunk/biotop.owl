@@ -10,7 +10,7 @@
     xmlns:span="http://www.ifomis.org/bfo/1.0/span#"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns="http://www.ifomis.org/biotop/1.0#"
-    xmlns:ro="http://www.ifomis.org/obo/ro/1.0/light#"
+    xmlns:ro="http://www.ifomis.org/obo/ro/1.0#"
   xml:base="http://www.ifomis.org/biotop/1.0">
   <owl:Ontology rdf:about="">
     <owl:imports rdf:resource="http://www.ifomis.org/bfo/1.0"/>
