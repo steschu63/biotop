@@ -1246,16 +1246,6 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
   </owl:Class>
   <owl:Class rdf:ID="CellMembrane">
     <rdfs:subClassOf rdf:resource="#CellularComponent"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasGrain"/>
-        </owl:onProperty>
-        <owl:someValuesFrom>
-          <owl:Class rdf:about="#Lipid"/>
-        </owl:someValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#PhosphorusAtom">
     <rdfs:subClassOf>
