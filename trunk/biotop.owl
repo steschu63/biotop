@@ -30,12 +30,12 @@
     >en</dc:language>
     <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Stefan Schulz</dc:creator>
+    <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2007-09-27</dc:date>
     <dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Elena Beisswanger</dc:creator>
     <dc:format rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >application/rdf+xml</dc:format>
-    <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
-    >2007-02-14</dc:date>
     <owl:imports rdf:resource="http://protege.stanford.edu/plugins/owl/dc/protege-dc.owl"/>
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >1.0</owl:versionInfo>
@@ -46,6 +46,41 @@
     <owl:imports rdf:resource="http://www.ifomis.org/obo/ro/1.0/light"/>
     <owl:imports rdf:resource="http://www.ifomis.org/bfo/1.0"/>
   </owl:Ontology>
+  <owl:Class rdf:ID="CellularComponent">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Organism"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Cell"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#derivesFrom"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Organism"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Organism"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#properPartOf"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PolyMolecularCompound"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Components which only can be formed inside living cells but which may survive their host cell.</rdfs:comment>
+  </owl:Class>
   <owl:Class rdf:ID="AliphaticChain">
     <owl:disjointWith>
       <owl:Class rdf:ID="AromaticHydrocarbon"/>
@@ -58,41 +93,6 @@
     </rdfs:subClassOf>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Hydrocarbon without rings.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="CellularComponent">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Components which only can be formed inside living cells but which may survive their host cell.</rdfs:comment>
-    <owl:disjointWith>
-      <owl:Class rdf:ID="Organism"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:ID="Cell"/>
-    </owl:disjointWith>
-    <rdfs:subClassOf>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:someValuesFrom>
-              <owl:Class rdf:about="#Organism"/>
-            </owl:someValuesFrom>
-            <owl:onProperty>
-              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#derivesFrom"/>
-            </owl:onProperty>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#properPartOf"/>
-            </owl:onProperty>
-            <owl:someValuesFrom>
-              <owl:Class rdf:about="#Organism"/>
-            </owl:someValuesFrom>
-          </owl:Restriction>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="PolyMolecularCompound"/>
-    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="Phosphate">
     <owl:equivalentClass>
@@ -268,9 +268,21 @@
   <owl:Class rdf:ID="Glucose">
     <rdfs:subClassOf rdf:resource="#Hexose"/>
   </owl:Class>
+  <owl:Class rdf:ID="Fungus">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Eukaryote"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Protist"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Plant"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Animal"/>
+    </owl:disjointWith>
+  </owl:Class>
   <owl:Class rdf:ID="EntireMolecularEntity">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Separately distinguishable molecular structure, neither part of nor attached to any other molecular structure. Atoms are not considered molecular structures. The hierarchy of entire entities mirrors the hierarchy of structures.</rdfs:comment>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
@@ -294,20 +306,8 @@
     <owl:disjointWith>
       <owl:Class rdf:ID="MolecularGroup"/>
     </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:ID="Fungus">
-    <owl:disjointWith>
-      <owl:Class rdf:ID="Protist"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:ID="Plant"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:ID="Animal"/>
-    </owl:disjointWith>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Eukaryote"/>
-    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Separately distinguishable molecular structure, neither part of nor attached to any other molecular structure. Atoms are not considered molecular structures. The hierarchy of entire entities mirrors the hierarchy of structures.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:ID="Tissue">
     <rdfs:subClassOf>
@@ -428,31 +428,24 @@
       <owl:Class rdf:about="#CellInVivo"/>
     </owl:disjointWith>
   </owl:Class>
-  <owl:Class rdf:ID="PhysicalAnatomicalEntity">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Superclass of  FMA physical anatomical entity since it contains also non-canonical anatomical entities and is not restricted to human. Has spatial dimension(s).</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="ObjectOrFiatObjectPart"/>
-    </rdfs:subClassOf>
-  </owl:Class>
   <owl:Class rdf:ID="PortionOfHomogenousLiquid">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pure liquid consisting only of one kind of particles, e.g. H2O, liquid Hg, ...</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class rdf:ID="PortionOfHomogenousMatter"/>
     </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Pure liquid consisting only of one kind of particles, e.g. H2O, liquid Hg, ...</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:ID="Cytoplasm">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:someValuesFrom>
           <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#hasGrain"/>
-            </owl:onProperty>
             <owl:someValuesFrom>
               <owl:Class rdf:ID="WaterMolecule"/>
             </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasGrain"/>
+            </owl:onProperty>
           </owl:Restriction>
         </owl:someValuesFrom>
         <owl:onProperty rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#hasPart"/>
@@ -496,6 +489,11 @@
     </owl:disjointWith>
   </owl:Class>
   <owl:Class rdf:ID="PortionOfHeterogenousMatter">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#PortionOfHomogenousMatter"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Composed by components of different kinds of Collectives. These "collective components" may be cohesive (e.g. a solvent) of disconnected (e.g. the solute) in a chemical solution.</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class rdf:ID="PortionOfCohesiveMatter"/>
     </rdfs:subClassOf>
@@ -519,11 +517,6 @@
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="#PortionOfHomogenousMatter"/>
-    </owl:disjointWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Composed by components of different kinds of Collectives. These "collective components" may be cohesive (e.g. a solvent) of disconnected (e.g. the solute) in a chemical solution.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#EntireOligopeptideMolecule">
     <owl:equivalentClass>
@@ -559,33 +552,66 @@
     >Definition: Amino Acid Polymer up to 10 monomers.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:ID="EntireDNAMolecule">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="EntireRNAMolecule"/>
+    </owl:disjointWith>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Class>
             <owl:complementOf>
               <owl:Restriction>
-                <owl:someValuesFrom>
-                  <owl:Class rdf:about="#MolecularEntity"/>
-                </owl:someValuesFrom>
                 <owl:onProperty>
                   <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#properPartOf"/>
                 </owl:onProperty>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:ID="DNA"/>
+                </owl:someValuesFrom>
               </owl:Restriction>
             </owl:complementOf>
           </owl:Class>
-          <owl:Class rdf:ID="NucleicAcid"/>
           <owl:Restriction>
             <owl:someValuesFrom>
-              <owl:Class rdf:ID="DNASequence"/>
+              <owl:Class rdf:ID="DNARegion"/>
             </owl:someValuesFrom>
             <owl:onProperty rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#hasPart"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#DNA"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EntireNucleicAcidMolecule"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DNA">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: A DNA is a complex, high-molecular-weight biochemical macromolecule composed of deoxyribonumcleotide chains that convey genetic information.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:ID="NucleicAcid"/>
+          <owl:Restriction>
+            <owl:allValuesFrom>
+              <owl:Class rdf:ID="Deoxyribonucleotide"/>
+            </owl:allValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Deoxyribonucleotide"/>
+            </owl:someValuesFrom>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
     <owl:disjointWith>
-      <owl:Class rdf:ID="EntireRNAMolecule"/>
+      <owl:Class rdf:ID="RNA"/>
     </owl:disjointWith>
   </owl:Class>
   <owl:Class rdf:about="#CellInVivo">
@@ -594,12 +620,12 @@
         <owl:unionOf rdf:parseType="Collection">
           <owl:Class rdf:about="#Organism"/>
           <owl:Restriction>
-            <owl:onProperty>
-              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
-            </owl:onProperty>
             <owl:someValuesFrom>
               <owl:Class rdf:about="#Organism"/>
             </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
+            </owl:onProperty>
           </owl:Restriction>
         </owl:unionOf>
       </owl:Class>
@@ -610,12 +636,12 @@
     <owl:disjointWith rdf:resource="#ModifiedCell"/>
   </owl:Class>
   <owl:Class rdf:ID="Ribose">
-    <owl:disjointWith>
-      <owl:Class rdf:ID="Deoxyribose"/>
-    </owl:disjointWith>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#Pentose"/>
     </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Deoxyribose"/>
+    </owl:disjointWith>
   </owl:Class>
   <owl:Class rdf:about="#Pentose">
     <rdfs:subClassOf>
@@ -630,12 +656,12 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty>
-          <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
-        </owl:onProperty>
         <owl:someValuesFrom>
           <owl:Class rdf:about="#CarbonHydrogenSubstructure"/>
         </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
+        </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
@@ -646,11 +672,6 @@
     <owl:disjointWith rdf:resource="#Hexose"/>
   </owl:Class>
   <owl:Class rdf:ID="PolyatomicEntity">
-    <owl:disjointWith>
-      <owl:Class rdf:ID="SubatomicParticle"/>
-    </owl:disjointWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Whatever has more than one atom as part is a polyatomic entity: In biological systems these entities generally occur in very high quantities. In text, references to chemicals are often ambiguous. When we state "water has a molecular weight of 18" we refer to single water molecules. However, saying that "water has a density of 1kg/dm³" under certan conditions then we make a statement about pluralities of water molecules each of which has water molecules as "grains"</rdfs:comment>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
@@ -662,12 +683,19 @@
               <owl:Class rdf:about="#Atom"/>
             </owl:someValuesFrom>
           </owl:Restriction>
-          <owl:Class rdf:about="#ObjectOrFiatObjectPart"/>
+          <owl:Class rdf:ID="ObjectOrFiatObjectPart"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="SubatomicParticle"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Whatever has more than one atom as part is a polyatomic entity: In biological systems these entities generally occur in very high quantities. In text, references to chemicals are often ambiguous. When we state "water has a molecular weight of 18" we refer to single water molecules. However, saying that "water has a density of 1kg/dm³" under certan conditions then we make a statement about pluralities of water molecules each of which has water molecules as "grains"</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:ID="Proton">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Positively Charged Particle</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#SubatomicParticle"/>
     </rdfs:subClassOf>
@@ -677,61 +705,54 @@
     <owl:disjointWith>
       <owl:Class rdf:ID="Electron"/>
     </owl:disjointWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Positively Charged Particle</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MultiCellularOrganismProcess">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PhysiologicalProcess"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="rRNAMolecule">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EntireRNAMolecule"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Gene">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DNARegion"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#properPartOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#EntireDNAMolecule"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#Neutron">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Neutral Particle</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#SubatomicParticle"/>
-    </rdfs:subClassOf>
     <owl:disjointWith>
       <owl:Class rdf:about="#Electron"/>
     </owl:disjointWith>
     <owl:disjointWith rdf:resource="#Proton"/>
-  </owl:Class>
-  <owl:Class rdf:ID="RNASequence">
     <rdfs:subClassOf>
-      <owl:Class rdf:ID="NucleotideSequence"/>
+      <owl:Class rdf:about="#SubatomicParticle"/>
     </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="#DNASequence"/>
-    </owl:disjointWith>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#hasComponent"/>
-            </owl:onProperty>
-            <owl:allValuesFrom>
-              <owl:Class rdf:ID="Ribonucleotide"/>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#hasComponent"/>
-            </owl:onProperty>
-            <owl:someValuesFrom>
-              <owl:Class rdf:about="#Ribonucleotide"/>
-            </owl:someValuesFrom>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
   </owl:Class>
   <owl:Class rdf:ID="BodyFluid">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Suspension and / or solution of biomolecules, ions, bigger particles in Water.</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class>
         <owl:unionOf rdf:parseType="Collection">
           <owl:Restriction>
-            <owl:onProperty>
-              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#derivesFrom"/>
-            </owl:onProperty>
             <owl:someValuesFrom>
               <owl:Class rdf:about="#Organism"/>
             </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#derivesFrom"/>
+            </owl:onProperty>
           </owl:Restriction>
           <owl:Restriction>
             <owl:onProperty rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#partOf"/>
@@ -744,23 +765,26 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:someValuesFrom>
-          <owl:Restriction>
-            <owl:someValuesFrom>
-              <owl:Class rdf:about="#WaterMolecule"/>
-            </owl:someValuesFrom>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#hasGrain"/>
-            </owl:onProperty>
-          </owl:Restriction>
-        </owl:someValuesFrom>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="#hasComponent"/>
         </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasGrain"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#WaterMolecule"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:someValuesFrom>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
         <owl:someValuesFrom>
           <owl:Restriction>
             <owl:onProperty>
@@ -771,16 +795,11 @@
             </owl:someValuesFrom>
           </owl:Restriction>
         </owl:someValuesFrom>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Class rdf:ID="PortionOfHeterogenousLiquid"/>
     </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Suspension and / or solution of biomolecules, ions, bigger particles in Water.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#NucleicAcid">
     <owl:equivalentClass>
@@ -809,12 +828,42 @@
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: A nucleic acid is a complex, high-molecular-weight biochemical macromolecule composed of nucleotide chains that convey genetic information.</rdfs:comment>
   </owl:Class>
+  <owl:Class rdf:ID="RNARegion">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#DNARegion"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
+            <owl:allValuesFrom>
+              <owl:Class rdf:ID="Ribonucleotide"/>
+            </owl:allValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Ribonucleotide"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RNA"/>
+    </rdfs:subClassOf>
+  </owl:Class>
   <owl:Class rdf:ID="PortionOfHomogenousSolid">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pure solid consisting only of one kind of particles, e.g. a piece of metal</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#PortionOfHomogenousMatter"/>
     </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Pure solid consisting only of one kind of particles, e.g. a piece of metal</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:ID="OligoOrPolymer">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -831,12 +880,12 @@
             </owl:allValuesFrom>
           </owl:Restriction>
           <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#hasComponent"/>
-            </owl:onProperty>
             <owl:someValuesFrom>
               <owl:Class rdf:about="#Monomer"/>
             </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
           </owl:Restriction>
           <owl:Class rdf:about="#MolecularEntity"/>
         </owl:intersectionOf>
@@ -848,30 +897,30 @@
   </owl:Class>
   <owl:Class rdf:about="#AminoAcidMonomer">
     <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#CarbonHydrogenSubstructure"/>
+        </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#hasPart"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
       <owl:Class rdf:about="#MolecularEntity"/>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#hasPart"/>
         <owl:someValuesFrom>
-          <owl:Class rdf:about="#CarbonHydrogenSubstructure"/>
+          <owl:Class rdf:about="#AminoGroup"/>
         </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Comment: (QCR) ro:hasPart some CarbonHydrogenSubstructure and ((hasComponent myx 2 CarboxyGroup) and (hasComponent min 1 CarboxyGroup) and (hasComponent exactly 1 AminoGroup)) or ((hasComponent max 2 AminoGroup) and (hasComponent min 1 AminoGroup) and (hasComponent exactly 1 CarboxyGroup))</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Comment: In chemistry, an amino acid is any molecule that contains both amine and carboxyl functional groups. However, in biochemistry, this more general term is frequently used to refer to alpha amino acids (amino acids in which the amino and carboxylate functionalities are attached to the same carbon, called α–carbon). Amino Acids have at least one amino and one carboxy group. Those having two carboxy groups have only one amino group and vice versa.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
-        <owl:someValuesFrom>
-          <owl:Class rdf:about="#AminoGroup"/>
-        </owl:someValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
     <owl:disjointWith>
       <owl:Class rdf:about="#Nucleotide"/>
     </owl:disjointWith>
@@ -879,12 +928,12 @@
     >Definition: Amino Acids molecules or residues (residues as in peptide bonds)</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
         <owl:someValuesFrom>
           <owl:Class rdf:about="#CarboxyGroup"/>
         </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <owl:disjointWith>
@@ -893,6 +942,12 @@
   </owl:Class>
   <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#Function"/>
   <owl:Class rdf:ID="Carbohydrate">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="AminoAcidSequence"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MolecularEntity"/>
+    </rdfs:subClassOf>
     <owl:equivalentClass>
       <owl:Class>
         <owl:unionOf rdf:parseType="Collection">
@@ -902,17 +957,11 @@
         </owl:unionOf>
       </owl:Class>
     </owl:equivalentClass>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#MolecularEntity"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:ID="AminoAcidSequence"/>
-    </owl:disjointWith>
   </owl:Class>
   <owl:Class rdf:about="#Oligosaccharide">
+    <rdfs:subClassOf rdf:resource="#Carbohydrate"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Comment: (QCR) Carbohydrate and hasComponent min 2 Monosaccharide and hasComponent max 9 Monosaccharide and hasComponent only Monomer</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Carbohydrate"/>
     <owl:disjointWith>
       <owl:Class rdf:about="#Monosaccharide"/>
     </owl:disjointWith>
@@ -934,14 +983,6 @@
     </owl:disjointWith>
   </owl:Class>
   <owl:Class rdf:ID="MoleculeComplex">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#PolyMolecularCompound"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="#Organism"/>
-    </owl:disjointWith>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Particle that consists of entire molecules.</rdfs:comment>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
@@ -960,6 +1001,14 @@
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PolyMolecularCompound"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Particle that consists of entire molecules.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Organism"/>
+    </owl:disjointWith>
   </owl:Class>
   <owl:Class rdf:ID="ProteinFunction">
     <owl:equivalentClass>
@@ -981,6 +1030,8 @@
     >Definition: Inherent Function of a protein or a part of it corresponds to GO molecular function.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:ID="ProteinDomain">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Structural domain is the smallest element of protein tertiary structure that is self-stabilizing and often folds independently of the rest of the amino acid chain. It may contain one or more structural motives (ProteinSubstructure). A protein domain typically has its own function, the overall function of the protein results from the composition of the functions of all of its structural domains.</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#Peptide"/>
     </rdfs:subClassOf>
@@ -998,8 +1049,6 @@
         <owl:someValuesFrom rdf:resource="#EntireProteinMolecule"/>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Structural domain is the smallest element of protein tertiary structure that is self-stabilizing and often folds independently of the rest of the amino acid chain. It may contain one or more structural motives (ProteinSubstructure). A protein domain typically has its own function, the overall function of the protein results from the composition of the functions of all of its structural domains.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#Organism">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -1007,9 +1056,6 @@
 "Colonial Organism" are not considered Organisms.</rdfs:comment>
     <owl:disjointWith rdf:resource="#MoleculeComplex"/>
     <owl:disjointWith rdf:resource="#CellularComponent"/>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#PolyMolecularCompound"/>
-    </rdfs:subClassOf>
     <owl:equivalentClass>
       <owl:Class>
         <owl:unionOf rdf:parseType="Collection">
@@ -1019,9 +1065,13 @@
         </owl:unionOf>
       </owl:Class>
     </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PolyMolecularCompound"/>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#Monomer">
-    <owl:disjointWith rdf:resource="#OligoOrPolymer"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Monomers can be described as constituted by molecularl groups. They are not repetitive and can constitute the building blocks of Polymers.</rdfs:comment>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
@@ -1050,37 +1100,49 @@
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Monomers can be described as constituted by molecularl groups. They are not repetitive and can constitute the building blocks of Polymers.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#OligoOrPolymer"/>
   </owl:Class>
   <owl:Class rdf:about="#CarbonHydrogenHydroxySubstructure">
-    <owl:disjointWith>
-      <owl:Class rdf:about="#AminoGroup"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="#CarboxyGroup"/>
-    </owl:disjointWith>
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#CarbonAtom"/>
+              <owl:Class rdf:about="#HydrogenAtom"/>
+              <owl:Class rdf:about="#OxygenAtom"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="#hasComponent"/>
         </owl:onProperty>
-        <owl:someValuesFrom>
-          <owl:Class rdf:about="#OxygenAtom"/>
-        </owl:someValuesFrom>
       </owl:Restriction>
     </rdfs:subClassOf>
     <owl:disjointWith>
-      <owl:Class rdf:about="#C6Chain"/>
+      <owl:Class rdf:about="#AminoGroup"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#OxygenAtom"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#CarboxyGroup"/>
     </owl:disjointWith>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: H-C-OH, the basic structure of carbohydrates.</rdfs:comment>
     <owl:disjointWith>
+      <owl:Class rdf:about="#C6Chain"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
       <owl:Class rdf:about="#CarbonHydrogenSubstructure"/>
     </owl:disjointWith>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="StructuralGroup"/>
-    </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
@@ -1092,20 +1154,7 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
-        <owl:allValuesFrom>
-          <owl:Class>
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Class rdf:about="#CarbonAtom"/>
-              <owl:Class rdf:about="#HydrogenAtom"/>
-              <owl:Class rdf:about="#OxygenAtom"/>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:allValuesFrom>
-      </owl:Restriction>
+      <owl:Class rdf:ID="StructuralGroup"/>
     </rdfs:subClassOf>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Comment: (QCR) hasComponent exactly 1 CarbonAtom and hasComponent exactly 2 HydrogenAtom and hasComponent exactly 1 OxygenAtom and hasComponent only (CarbonAtom or HydrogenAtom or OxygenAtom)</rdfs:comment>
@@ -1124,17 +1173,16 @@
     </owl:disjointWith>
     <owl:disjointWith rdf:resource="#C5Chain"/>
   </owl:Class>
-  <owl:Class rdf:about="#NucleotideSequence">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Synonym: NucleotidePolymer</rdfs:comment>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Synonym: NucleicAcid</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#NucleicAcid"/>
-  </owl:Class>
   <owl:Class rdf:about="#ObjectOrFiatObjectPart">
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#ObjectAggregate"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Site"/>
+    <owl:disjointWith rdf:resource="http://www.ifomis.org/bfo/1.0/snap#ObjectBoundary"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >This union class has been introduced because in many cases it is problematic to decide whether some IndependentContinuant fulfills the requirements of being completely delineated by fiat from its environment. It is also an issue of granularity. On an atomic level, for instance, the boundary between two atoms is a fiat one. In contrast, zooming out, a plausible standpoint could be that a functional group of an atom is not an fiat part, and in a very coarse grained view one could even subscribe the statement as given by BFO that a lung is not a fiat part (although its transitory structures (bronchi, vessels) can only delineated by fiat.
 Of course, there are entities that can be classified beyond any doubt as "snap:objects", such as free-floating cells, molecules in a gas, or independent organisms.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#IndependentContinuant"/>
     <owl:equivalentClass>
       <owl:Class>
         <owl:unionOf rdf:parseType="Collection">
@@ -1143,12 +1191,16 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
         </owl:unionOf>
       </owl:Class>
     </owl:equivalentClass>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#ObjectAggregate"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Site"/>
-    <owl:disjointWith rdf:resource="http://www.ifomis.org/bfo/1.0/snap#ObjectBoundary"/>
-    <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#IndependentContinuant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IntraCellularProcess">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CellularProcess"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MolecularProcess"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Process occuring in a cell.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:ID="EukaryoticCell">
     <owl:equivalentClass>
@@ -1180,9 +1232,9 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     >Definition: Articficially generated NucleotidePolymer.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#PortionOfHomogenousMatter">
-    <owl:disjointWith rdf:resource="#PortionOfHeterogenousMatter"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Composition of connected granular components of the same kind.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#PortionOfHeterogenousMatter"/>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#PortionOfCohesiveMatter"/>
     </rdfs:subClassOf>
@@ -1196,17 +1248,20 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#CyclicAliphatic">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Hydrocarbon"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Hydrocarbon with rings which are not aromatic rings (Cyclohexan)</rdfs:comment>
     <owl:disjointWith>
       <owl:Class rdf:about="#AromaticHydrocarbon"/>
     </owl:disjointWith>
     <owl:disjointWith rdf:resource="#AliphaticChain"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Hydrocarbon with rings which are not aromatic rings (Cyclohexan)</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Hydrocarbon"/>
-    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#SulphurAtom">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Atom"/>
+    </rdfs:subClassOf>
     <owl:disjointWith>
       <owl:Class rdf:about="#OxygenAtom"/>
     </owl:disjointWith>
@@ -1220,9 +1275,6 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <owl:disjointWith>
       <owl:Class rdf:about="#CarbonAtom"/>
     </owl:disjointWith>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Atom"/>
-    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#CarbonChain">
     <rdfs:subClassOf>
@@ -1293,36 +1345,51 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </owl:disjointWith>
     <owl:disjointWith rdf:resource="#SulphurAtom"/>
   </owl:Class>
-  <owl:Class rdf:about="#MolecularGroup">
-    <owl:equivalentClass>
+  <owl:Class rdf:about="#EntireNucleicAcidMolecule">
+    <rdfs:subClassOf rdf:resource="#NucleicAcid"/>
+    <rdfs:subClassOf>
       <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:allValuesFrom>
-              <owl:Class rdf:about="#Atom"/>
-            </owl:allValuesFrom>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#hasComponent"/>
-            </owl:onProperty>
-          </owl:Restriction>
-          <owl:Class rdf:about="#MolecularEntity"/>
+        <owl:complementOf>
           <owl:Restriction>
             <owl:onProperty>
               <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#properPartOf"/>
             </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#NucleicAcid"/>
+          </owl:Restriction>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MolecularGroup">
+    <owl:disjointWith rdf:resource="#EntireMolecularEntity"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Linked collection of atoms within a molcular entity. They cannot exist by themselves.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
+            <owl:allValuesFrom>
+              <owl:Class rdf:about="#Atom"/>
+            </owl:allValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:about="#MolecularEntity"/>
+          <owl:Restriction>
             <owl:someValuesFrom rdf:resource="#EntireMolecularEntity"/>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#properPartOf"/>
+            </owl:onProperty>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Linked collection of atoms within a molcular entity. They cannot exist by themselves.</rdfs:comment>
-    <owl:disjointWith rdf:resource="#EntireMolecularEntity"/>
   </owl:Class>
   <owl:Class rdf:ID="FunctionalGroup">
+    <rdfs:subClassOf rdf:resource="#MolecularGroup"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Functional groups are specific groups of atoms within molecules that are responsible for the characteristic chemical reactions of those molecules.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#MolecularGroup"/>
   </owl:Class>
   <owl:Class rdf:about="#UniCellularOrganism">
     <owl:disjointWith rdf:resource="#MulticellularOrganism"/>
@@ -1336,16 +1403,13 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
             <owl:someValuesFrom rdf:resource="#CellMembrane"/>
           </owl:Restriction>
           <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="#CellularComponent"/>
             <owl:onProperty>
               <owl:ObjectProperty rdf:about="#hasComponent"/>
             </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#CellularComponent"/>
           </owl:Restriction>
           <owl:Class rdf:about="#Organism"/>
           <owl:Restriction>
-            <owl:onProperty>
-              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
-            </owl:onProperty>
             <owl:allValuesFrom>
               <owl:Class>
                 <owl:complementOf>
@@ -1353,6 +1417,9 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
                 </owl:complementOf>
               </owl:Class>
             </owl:allValuesFrom>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
+            </owl:onProperty>
           </owl:Restriction>
           <owl:Restriction>
             <owl:onProperty>
@@ -1367,12 +1434,12 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     ></rdfs:label>
   </owl:Class>
   <owl:Class rdf:about="#Ribonucleotide">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Deoxyribonucleotide"/>
+    </owl:disjointWith>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#Nucleotide"/>
     </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:ID="Deoxyribonucleotide"/>
-    </owl:disjointWith>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
@@ -1399,16 +1466,16 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
             </owl:someValuesFrom>
           </owl:Restriction>
           <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Phosphate"/>
             <owl:onProperty>
               <owl:ObjectProperty rdf:about="#hasComponent"/>
             </owl:onProperty>
-            <owl:someValuesFrom rdf:resource="#Phosphate"/>
           </owl:Restriction>
           <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="#Ribose"/>
             <owl:onProperty>
               <owl:ObjectProperty rdf:about="#hasComponent"/>
             </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Ribose"/>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
@@ -1458,12 +1525,12 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
         <owl:someValuesFrom>
           <owl:Class rdf:about="#HydrogenAtom"/>
         </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
@@ -1495,9 +1562,6 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     >Definition: An eukaryote is an organism with a complex cell or cells, in which the genetic material is organized into a membrane-bound nucleus or nuclei. Most Eukaryots are multicellular, haowever, there are some which are always unicellular (protists, some fungi) but there are also unicellular developmental stages (zygotes) of plants and animals.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#CarbonAtom">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Atom"/>
-    </rdfs:subClassOf>
     <owl:disjointWith rdf:resource="#NitrogenAtom"/>
     <owl:disjointWith rdf:resource="#SulphurAtom"/>
     <owl:disjointWith>
@@ -1507,13 +1571,16 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
       <owl:Class rdf:about="#HydrogenAtom"/>
     </owl:disjointWith>
     <owl:disjointWith rdf:resource="#PhosphorusAtom"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Atom"/>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="AnatomicalStructure">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Superclass of  FMA anatomical structure since it contains also non-canonical anatomical structures and is not restricted to human. Has spatial dimension(s), mass and an inherent structure.</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class rdf:ID="MaterialAnatomicalEntity"/>
     </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Superclass of  FMA 'anatomical structure'. It subsumes canonical and non-canonical anatomical structures and is species independent.  It has spatial dimension(s), mass and an inherent structure.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#YeastCell">
     <rdfs:subClassOf rdf:resource="#EukaryoticCell"/>
@@ -1523,21 +1590,6 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     >Comment: We conceive organisms in a material sense. Therefore we do not assume any ontological difference between a monocellular organism and the cell it is made of.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#AminoGroup">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:allValuesFrom>
-          <owl:Class>
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Class rdf:about="#HydrogenAtom"/>
-              <owl:Class rdf:about="#NitrogenAtom"/>
-            </owl:unionOf>
-          </owl:Class>
-        </owl:allValuesFrom>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
     <owl:disjointWith rdf:resource="#C5Chain"/>
     <owl:disjointWith>
       <owl:Class rdf:about="#CarbonHydrogenSubstructure"/>
@@ -1555,51 +1607,79 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </owl:disjointWith>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Amines are organic compounds and a type of functional group that contain nitrogen as the key atom. Isolated neutral or kationic amino group or amino group forming a peptide bond. NH2 or NH3+</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:someValuesFrom>
-          <owl:Class rdf:about="#HydrogenAtom"/>
-        </owl:someValuesFrom>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
     <owl:disjointWith>
       <owl:Class rdf:about="#CarboxyGroup"/>
     </owl:disjointWith>
     <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
     <rdfs:subClassOf rdf:resource="#FunctionalGroup"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#HydrogenAtom"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
     <owl:disjointWith>
       <owl:Class rdf:about="#C6Chain"/>
     </owl:disjointWith>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Comment: (QCR) hasComponent exactly 1 NitrogenAtom and hasComponent max 3 HydrogenAtom and hasComponent min 1 HydrogenAtom and hasComponent only (NitrogenAtom or HydrogenAtom)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#HydrogenAtom"/>
+              <owl:Class rdf:about="#NitrogenAtom"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#StructuralGroup">
+    <rdfs:subClassOf rdf:resource="#MolecularGroup"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Structural groups are specific constellations of atoms within molecules which are relevant for the classification of those compounds, e.g. Pentoses have a 5-C-Chain, Hexoses have a 6-C-Chain.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#MolecularGroup"/>
   </owl:Class>
   <owl:Class rdf:about="#SubatomicParticle">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Parts of Atoms.</rdfs:comment>
     <rdfs:subClassOf rdf:resource="#ObjectOrFiatObjectPart"/>
     <owl:disjointWith>
       <owl:Class rdf:about="#Atom"/>
     </owl:disjointWith>
     <owl:disjointWith rdf:resource="#PolyatomicEntity"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Parts of Atoms.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="GeneRegion">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DNARegion"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#properPartOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Gene"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#Nucleotide">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Comment: (QCR) hasComponent exactly 1 HeterocyclicBase and hasComponent exactly 1 Phosphate and hasComponent only (Phosphate or Ribose or HeterocyclicBase) and hasComponent exactly 1 Pentose</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MolecularEntity"/>
+    </rdfs:subClassOf>
     <owl:disjointWith>
       <owl:Class rdf:about="#HeterocyclicBase"/>
     </owl:disjointWith>
     <owl:disjointWith rdf:resource="#AminoAcidMonomer"/>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#MolecularEntity"/>
-    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Comment: (QCR) hasComponent exactly 1 HeterocyclicBase and hasComponent exactly 1 Phosphate and hasComponent only (Phosphate or Ribose or HeterocyclicBase) and hasComponent exactly 1 Pentose</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#Hydrocarbon">
     <owl:equivalentClass>
@@ -1627,12 +1707,12 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
             </owl:onProperty>
           </owl:Restriction>
           <owl:Restriction>
-            <owl:onProperty>
-              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
-            </owl:onProperty>
             <owl:someValuesFrom>
               <owl:Class rdf:about="#HydrogenAtom"/>
             </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
+            </owl:onProperty>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
@@ -1641,9 +1721,17 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     >Definition: Compounds consisting of carbon and hydrogen only.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#MaterialAnatomicalEntity">
-    <rdfs:subClassOf rdf:resource="#PhysicalAnatomicalEntity"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#PolyMolecularCompound"/>
+          <owl:Class rdf:about="#MolecularEntity"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PolyatomicEntity"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Superclass of  FMA material anatomical entity since it contains also non-canonical anatomical entities and is not restricted to human. Has spatial dimension(s) and mass.</rdfs:comment>
+    >Superclass of  FMA 'material anatomical entity'. It subsumes canonical and non-canonical material anatomical entities and is species independent.  It has spatial dimension(s) and  mass.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#MolecularFunction">
     <owl:equivalentClass>
@@ -1664,21 +1752,6 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Inherent function of a molecule.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:about="#AliphaticMediumChainStructure">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
-        </owl:onProperty>
-        <owl:someValuesFrom>
-          <owl:Class rdf:ID="C10-24Chain"/>
-        </owl:someValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="#AliphaticChain"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Hydrophobic Chain (length generally 10 - 24 C atoms), such as constituting the "tail" of a fatty acid. May contain unsaturated segments.</rdfs:comment>
-  </owl:Class>
   <owl:Class rdf:about="#Monosaccharide">
     <rdfs:subClassOf rdf:resource="#Carbohydrate"/>
     <owl:disjointWith>
@@ -1694,53 +1767,93 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
+  <owl:Class rdf:about="#AliphaticMediumChainStructure">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="C10-24Chain"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#AliphaticChain"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Hydrophobic Chain (length generally 10 - 24 C atoms), such as constituting the "tail" of a fatty acid. May contain unsaturated segments.</rdfs:comment>
+  </owl:Class>
   <owl:Class rdf:ID="BiologicalProcess">
+    <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/span#Process"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Process specific for biological systems.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/span#Process"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DNARegion">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
+            <owl:allValuesFrom>
+              <owl:Class rdf:about="#Deoxyribonucleotide"/>
+            </owl:allValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Deoxyribonucleotide"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#RNARegion"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: DNA (deoxyribonucleic acid) is a chain of deoxyribonucleotides.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#DNA"/>
   </owl:Class>
   <owl:Class rdf:ID="ProteinSubstructure">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: A secondary substructure of a protein (protein Motif)</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#Peptide"/>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#hasPart"/>
         <owl:someValuesFrom>
           <owl:Class rdf:about="#AminoAcidSequence"/>
         </owl:someValuesFrom>
+        <owl:onProperty rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#hasPart"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#partOf"/>
         <owl:someValuesFrom rdf:resource="#EntireProteinMolecule"/>
+        <owl:onProperty rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#partOf"/>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: A secondary substructure of a protein (protein Motif)</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="NeurologicalProcess">
+    <rdfs:subClassOf rdf:resource="#MultiCellularOrganismProcess"/>
   </owl:Class>
   <owl:Class rdf:about="#Cell">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#PolyMolecularCompound"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="#CellularComponent"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Constituting unit of an organism.</rdfs:comment>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="#CellMembrane"/>
             <owl:onProperty>
               <owl:ObjectProperty rdf:about="#hasComponent"/>
             </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#CellMembrane"/>
           </owl:Restriction>
           <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="#CellularComponent"/>
             <owl:onProperty>
               <owl:ObjectProperty rdf:about="#hasComponent"/>
             </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#CellularComponent"/>
           </owl:Restriction>
           <owl:Restriction>
             <owl:allValuesFrom>
@@ -1761,9 +1874,14 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#CellularComponent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Constituting unit of an organism.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PolyMolecularCompound"/>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#Plant">
-    <rdfs:subClassOf rdf:resource="#Eukaryote"/>
     <owl:disjointWith rdf:resource="#Fungus"/>
     <owl:disjointWith>
       <owl:Class rdf:about="#Animal"/>
@@ -1771,9 +1889,9 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <owl:disjointWith>
       <owl:Class rdf:about="#Protist"/>
     </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Eukaryote"/>
   </owl:Class>
   <owl:Class rdf:about="#PortionOfCohesiveMatter">
-    <rdfs:subClassOf rdf:resource="#PolyatomicEntity"/>
     <owl:equivalentClass>
       <owl:Class>
         <owl:unionOf rdf:parseType="Collection">
@@ -1782,6 +1900,7 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
         </owl:unionOf>
       </owl:Class>
     </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#PolyatomicEntity"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Aggregration of multiple components without clear identity and unity criteria. In contradistinction to ObjectAggregates they are not disconnected</rdfs:comment>
   </owl:Class>
@@ -1797,11 +1916,11 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <owl:disjointWith rdf:resource="#EntireOligopeptideMolecule"/>
   </owl:Class>
   <owl:Class rdf:ID="InorganicMolecularEntity">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Substances which do not include carbon and its derivatives as their principal elements. However, carbides, carbonates, cyanides, cyanates and carbon disulfide are included in this class.</rdfs:comment>
     <owl:disjointWith>
       <owl:Class rdf:ID="OrganicMolecularEntity"/>
     </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Substances which do not include carbon and its derivatives as their principal elements. However, carbides, carbonates, cyanides, cyanates and carbon disulfide are included in this class.</rdfs:comment>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
@@ -1809,18 +1928,21 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
           <owl:Class>
             <owl:complementOf>
               <owl:Restriction>
-                <owl:onProperty>
-                  <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
-                </owl:onProperty>
                 <owl:someValuesFrom>
                   <owl:Class rdf:about="#CarbonHydrogenSubstructure"/>
                 </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
+                </owl:onProperty>
               </owl:Restriction>
             </owl:complementOf>
           </owl:Class>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="DNAFragment">
+    <rdfs:subClassOf rdf:resource="#EntireDNAMolecule"/>
   </owl:Class>
   <owl:Class rdf:about="#Adenine">
     <owl:disjointWith rdf:resource="#Uracil"/>
@@ -1834,6 +1956,8 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="ProteinSubunit">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: A protein molecule that assembles with other protein molecules to form a protein complex. May have its own function. However, most proteinsubunits do not gain functionality until associated with the other subunits.</rdfs:comment>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
@@ -1849,15 +1973,18 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: A protein molecule that assembles with other protein molecules to form a protein complex. May have its own function. However, most proteinsubunits do not gain functionality until associated with the other subunits.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#Polysaccharide">
-    <rdfs:subClassOf rdf:resource="#Carbohydrate"/>
-    <owl:disjointWith rdf:resource="#Oligosaccharide"/>
-    <owl:disjointWith rdf:resource="#Monosaccharide"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Comment: (QCR) Carbohydrate and hasComponent min 10 Monosaccharide and hasComponent only Monomer</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Oligosaccharide"/>
+    <owl:disjointWith rdf:resource="#Monosaccharide"/>
+    <rdfs:subClassOf rdf:resource="#Carbohydrate"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PhysiologicalProcess">
+    <rdfs:subClassOf rdf:resource="#BiologicalProcess"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Process occuring on organismal or cellular level. Has suhas subclasses of MolecularEntity as participants).</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#MolecularEntity">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -1911,15 +2038,14 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <rdfs:subClassOf rdf:resource="#CarbonChain"/>
   </owl:Class>
   <owl:Class rdf:about="#AminoAcidSequence">
-    <owl:disjointWith rdf:resource="#Carbohydrate"/>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
-            <owl:allValuesFrom rdf:resource="#AminoAcidMonomer"/>
             <owl:onProperty>
               <owl:ObjectProperty rdf:about="#hasComponent"/>
             </owl:onProperty>
+            <owl:allValuesFrom rdf:resource="#AminoAcidMonomer"/>
           </owl:Restriction>
           <owl:Restriction>
             <owl:onProperty>
@@ -1930,16 +2056,22 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#Carbohydrate"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Peptide"/>
+    </rdfs:subClassOf>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Chain of amino acids, joined by peptide bonds. Folded or unfolded.</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Synonym: AminoAcidSequence</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Peptide"/>
-    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="Chromosome">
     <rdfs:subClassOf rdf:resource="#MoleculeComplex"/>
+  </owl:Class>
+  <owl:Class rdf:about="#MolecularProcess">
+    <rdfs:subClassOf rdf:resource="#BiologicalProcess"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Process occuring on molecular level. It has exclusivly subclasses of MolecularEntity as participants.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#CarboxyGroup">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -1952,9 +2084,21 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="#hasComponent"/>
         </owl:onProperty>
-        <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#OxygenAtom"/>
+        </owl:someValuesFrom>
       </owl:Restriction>
     </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: COOH or COO-</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:allValuesFrom>
@@ -1971,8 +2115,6 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: COOH or COO-</rdfs:comment>
     <owl:disjointWith rdf:resource="#AminoGroup"/>
     <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
     <owl:disjointWith rdf:resource="#C5Chain"/>
@@ -1982,20 +2124,10 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </owl:disjointWith>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:someValuesFrom>
-          <owl:Class rdf:about="#OxygenAtom"/>
-        </owl:someValuesFrom>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="#hasComponent"/>
         </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
         <owl:someValuesFrom rdf:resource="#CarbonAtom"/>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <owl:disjointWith>
@@ -2003,13 +2135,14 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </owl:disjointWith>
   </owl:Class>
   <owl:Class rdf:ID="PortionOfGas">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Non-connected  Molecules in gaseous state</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#ObjectAggregate"/>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasGrain"/>
+        </owl:onProperty>
         <owl:someValuesFrom>
           <owl:Class>
             <owl:unionOf rdf:parseType="Collection">
@@ -2018,11 +2151,10 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
             </owl:unionOf>
           </owl:Class>
         </owl:someValuesFrom>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasGrain"/>
-        </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Non-connected  Molecules in gaseous state</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#C6Chain">
     <owl:disjointWith rdf:resource="#AminoGroup"/>
@@ -2062,6 +2194,31 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <owl:disjointWith rdf:resource="#Fungus"/>
     <rdfs:subClassOf rdf:resource="#Eukaryote"/>
   </owl:Class>
+  <owl:Class rdf:about="#RNA">
+    <owl:disjointWith rdf:resource="#DNA"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#NucleicAcid"/>
+          <owl:Restriction>
+            <owl:allValuesFrom rdf:resource="#Ribonucleotide"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Ribonucleotide"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#CellularProcess">
+    <rdfs:subClassOf rdf:resource="#PhysiologicalProcess"/>
+  </owl:Class>
   <owl:Class rdf:about="#PortionOfHeterogenousLiquid">
     <rdfs:subClassOf rdf:resource="#PortionOfHeterogenousMatter"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -2069,41 +2226,40 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
   </owl:Class>
   <owl:Class rdf:about="#ProteinComplex">
     <rdfs:subClassOf rdf:resource="#MoleculeComplex"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: Mostly only proteins but composition with other molecules possible (e.g. Fe -&gt; Hemoglobin)</rdfs:comment>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#hasComponent"/>
-            </owl:onProperty>
             <owl:allValuesFrom>
               <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="#Atom"/>
                   <owl:Class rdf:about="#EntireProteinMolecule"/>
-                  <owl:Class rdf:about="#Monomer"/>
+                  <owl:Class rdf:about="#MolecularEntity"/>
                 </owl:unionOf>
               </owl:Class>
             </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
             <owl:onProperty>
               <owl:ObjectProperty rdf:about="#hasComponent"/>
             </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
             <owl:someValuesFrom rdf:resource="#EntireProteinMolecule"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: Mostly only proteins but composition with other molecules possible (e.g. Fe -&gt; Hemoglobin)</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#Electron">
     <rdfs:subClassOf rdf:resource="#SubatomicParticle"/>
-    <owl:disjointWith rdf:resource="#Neutron"/>
-    <owl:disjointWith rdf:resource="#Proton"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Negatively Charged Particle</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Neutron"/>
+    <owl:disjointWith rdf:resource="#Proton"/>
   </owl:Class>
   <owl:Class rdf:about="#AromaticHydrocarbon">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -2121,26 +2277,26 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
       <owl:Class>
         <owl:unionOf rdf:parseType="Collection">
           <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="#MulticellularOrganism"/>
             <owl:onProperty>
               <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#derivesFrom"/>
             </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#MulticellularOrganism"/>
           </owl:Restriction>
           <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#MulticellularOrganism"/>
             <owl:onProperty>
               <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#properPartOf"/>
             </owl:onProperty>
-            <owl:someValuesFrom rdf:resource="#MulticellularOrganism"/>
           </owl:Restriction>
         </owl:unionOf>
       </owl:Class>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Tissue"/>
         <owl:onProperty>
           <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
         </owl:onProperty>
-        <owl:someValuesFrom rdf:resource="#Tissue"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
@@ -2155,6 +2311,27 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </owl:disjointWith>
     <owl:disjointWith rdf:resource="#C6Chain"/>
     <rdfs:subClassOf rdf:resource="#FunctionalGroup"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Definition: OH or OH2+</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#OxygenAtom"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
@@ -2170,27 +2347,6 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
         </owl:allValuesFrom>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
-        <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
-        <owl:someValuesFrom>
-          <owl:Class rdf:about="#OxygenAtom"/>
-        </owl:someValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: OH or OH2+</rdfs:comment>
-    <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
     <owl:disjointWith rdf:resource="#CarboxyGroup"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Comment: (QCR) hasComponent exactly 1 OxygenAtom and hasComponent exactly 1 HydrogenAtom and hasComponent only (OxygenAtom or HydrogenAtom)</rdfs:comment>
@@ -2200,36 +2356,7 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
   <owl:Class rdf:about="http://www.ifomis.org/bfo/1.0/snap#ObjectAggregate">
     <owl:disjointWith rdf:resource="#ObjectOrFiatObjectPart"/>
   </owl:Class>
-  <owl:Class rdf:about="#DNASequence">
-    <rdfs:subClassOf rdf:resource="#NucleotideSequence"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Definition: DNA (deoxyribonucleic acid) is a chain of deoxyribonucleotides.</rdfs:comment>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#hasComponent"/>
-            </owl:onProperty>
-            <owl:allValuesFrom>
-              <owl:Class rdf:about="#Deoxyribonucleotide"/>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#hasComponent"/>
-            </owl:onProperty>
-            <owl:someValuesFrom>
-              <owl:Class rdf:about="#Deoxyribonucleotide"/>
-            </owl:someValuesFrom>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <owl:disjointWith rdf:resource="#RNASequence"/>
-  </owl:Class>
   <owl:Class rdf:about="#Deoxyribonucleotide">
-    <owl:disjointWith rdf:resource="#Ribonucleotide"/>
     <rdfs:subClassOf rdf:resource="#Nucleotide"/>
     <owl:equivalentClass>
       <owl:Class>
@@ -2249,28 +2376,29 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
             </owl:onProperty>
           </owl:Restriction>
           <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Deoxyribose"/>
             <owl:onProperty>
               <owl:ObjectProperty rdf:about="#hasComponent"/>
             </owl:onProperty>
-            <owl:someValuesFrom rdf:resource="#Deoxyribose"/>
           </owl:Restriction>
           <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasComponent"/>
+            </owl:onProperty>
             <owl:someValuesFrom>
               <owl:Class rdf:about="#HeterocyclicBase"/>
             </owl:someValuesFrom>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#hasComponent"/>
-            </owl:onProperty>
           </owl:Restriction>
           <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="#Phosphate"/>
             <owl:onProperty>
               <owl:ObjectProperty rdf:about="#hasComponent"/>
             </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Phosphate"/>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#Ribonucleotide"/>
   </owl:Class>
   <owl:Class rdf:about="#Guanine">
     <owl:disjointWith rdf:resource="#Uracil"/>
@@ -2280,6 +2408,9 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <rdfs:subClassOf>
       <owl:Class rdf:about="#HeterocyclicBase"/>
     </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ChromosomalDNA">
+    <rdfs:subClassOf rdf:resource="#EntireDNAMolecule"/>
   </owl:Class>
   <owl:Class rdf:about="#CarbonHydrogenSubstructure">
     <rdfs:subClassOf>
@@ -2300,11 +2431,15 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <rdfs:subClassOf rdf:resource="#StructuralGroup"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Part of a molecule constituted by a (1-3 valued) carbon hydrogen bound. Traditional (fiat) criterion for distinguishing organic from inorganic compounds. Excludes certain carbon compounds such as HCN, CO2, traditionally considered inorganic. (Could be enhanced by carbon tetrahalogen, traditionally considered organic compounds but irrelevant for biology)</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasComponent"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
     <owl:disjointWith rdf:resource="#C5Chain"/>
-    <owl:disjointWith rdf:resource="#C6Chain"/>
-    <owl:disjointWith rdf:resource="#AminoGroup"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Comment: (QCR) hasComponent exactly 1 CarbonAtom and hasComponent exactly 1 HydrogenAtom and hasComponent only (CarbonAtom or HydrogenAtom)</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onProperty>
@@ -2313,14 +2448,10 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
         <owl:someValuesFrom rdf:resource="#CarbonAtom"/>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:someValuesFrom rdf:resource="#HydrogenAtom"/>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="#hasComponent"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#C6Chain"/>
+    <owl:disjointWith rdf:resource="#AminoGroup"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Comment: (QCR) hasComponent exactly 1 CarbonAtom and hasComponent exactly 1 HydrogenAtom and hasComponent only (CarbonAtom or HydrogenAtom)</rdfs:comment>
     <owl:disjointWith rdf:resource="#CarbonHydrogenHydroxySubstructure"/>
     <owl:disjointWith rdf:resource="#HydroxyGroup"/>
     <owl:disjointWith rdf:resource="#CarboxyGroup"/>
@@ -2341,7 +2472,7 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#EntireRNAMolecule">
-    <owl:disjointWith rdf:resource="#EntireDNAMolecule"/>
+    <rdfs:subClassOf rdf:resource="#EntireNucleicAcidMolecule"/>
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
@@ -2355,19 +2486,20 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
               </owl:Restriction>
             </owl:complementOf>
           </owl:Class>
-          <owl:Class rdf:about="#NucleicAcid"/>
           <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#RNARegion"/>
             <owl:onProperty rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#hasPart"/>
-            <owl:someValuesFrom rdf:resource="#RNASequence"/>
           </owl:Restriction>
+          <owl:Class rdf:about="#RNA"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#EntireDNAMolecule"/>
   </owl:Class>
   <owl:Class rdf:ID="ImmaterialAnatomicalEntity">
-    <rdfs:subClassOf rdf:resource="#PhysicalAnatomicalEntity"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Superclass of  FMAimmaterial anatomical entity since it contains also non-canonical anatomical entities and is not restricted to human. Has spatial dimension(s) but no mass.</rdfs:comment>
+    >Superclass of  FMA 'immaterial anatomical entity'. It subsumes canonical and non-canonical anatomical entities and is species independent.  It has spatial dimension(s) but no mass.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.ifomis.org/bfo/1.0/snap#Site"/>
   </owl:Class>
   <owl:Class rdf:about="#Animal">
     <rdfs:subClassOf rdf:resource="#Eukaryote"/>
@@ -2382,9 +2514,6 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <rdfs:subClassOf rdf:resource="#MolecularEntity"/>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onProperty>
-          <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
-        </owl:onProperty>
         <owl:someValuesFrom>
           <owl:Class>
             <owl:unionOf rdf:parseType="Collection">
@@ -2393,12 +2522,13 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
             </owl:unionOf>
           </owl:Class>
         </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
+        </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#Atom">
-    <owl:disjointWith rdf:resource="#MolecularEntity"/>
-    <owl:disjointWith rdf:resource="#SubatomicParticle"/>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:someValuesFrom rdf:resource="#SubatomicParticle"/>
@@ -2409,15 +2539,20 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#SubatomicParticle"/>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="#hasComponent"/>
         </owl:onProperty>
-        <owl:allValuesFrom rdf:resource="#SubatomicParticle"/>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="#ObjectOrFiatObjectPart"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Basic building block of molecules. Particle of discrete types. Biologically important atoms are C, N, H, O, P, S, Na, Ca, K, Mg, Cl, J, Fe, Co, Zn ,... Atoms may be electrically neutral or ionic.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#MolecularEntity"/>
+    <owl:disjointWith rdf:resource="#SubatomicParticle"/>
+  </owl:Class>
+  <owl:Class rdf:ID="tRNAMolecule">
+    <rdfs:subClassOf rdf:resource="#EntireRNAMolecule"/>
   </owl:Class>
   <owl:Class rdf:about="#OxygenAtom">
     <owl:disjointWith rdf:resource="#NitrogenAtom"/>
@@ -2455,10 +2590,10 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
             <owl:someValuesFrom rdf:resource="#CarbonHydrogenSubstructure"/>
           </owl:Restriction>
           <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#NitrogenAtom"/>
             <owl:onProperty>
               <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#hasProperPart"/>
             </owl:onProperty>
-            <owl:someValuesFrom rdf:resource="#NitrogenAtom"/>
           </owl:Restriction>
           <owl:Restriction>
             <owl:someValuesFrom rdf:resource="#OxygenAtom"/>
@@ -2479,6 +2614,9 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <owl:disjointWith rdf:resource="#ArchaebacterialCell"/>
     <rdfs:subClassOf rdf:resource="#ProkaryoticCell"/>
   </owl:Class>
+  <owl:Class rdf:ID="mRNAMolecule">
+    <rdfs:subClassOf rdf:resource="#EntireRNAMolecule"/>
+  </owl:Class>
   <owl:Class rdf:about="#PortionOfHeterogenousSolid">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Solid constituted by different kinds of collectives, e.g. a NaCl crystal, granite</rdfs:comment>
@@ -2489,13 +2627,13 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     <rdfs:subPropertyOf>
       <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#properPartOf"/>
     </rdfs:subPropertyOf>
-    <rdfs:range rdf:resource="#ObjectOrFiatObjectPart"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >For performance reasons, inverse relations are not encoded as such in OWL.</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >inverse of hasComponent.</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Components are those (first-order) parts which partition a compound. The whole is exactly the mereological sum of its components. A loss of a component affects the sortality of the compound (e.g. a complete vs. a defective organism). In many cases, the choice of what is a component of a compound is arbitrary, because there are several ways to divide a whole into parts. Components should be - at least - partly bona fide parts. The use of this relation also requires the commitment to an underlying granularity level. So could we consider the codons (base triples) as the components of a DNA molecule but also the single nucleotides. Note that components of a compound may also be portions of matter.</rdfs:comment>
+    <rdfs:range rdf:resource="#ObjectOrFiatObjectPart"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#hasComponent">
     <rdfs:domain rdf:resource="#ObjectOrFiatObjectPart"/>
@@ -2516,32 +2654,35 @@ Of course, there are entities that can be classified beyond any doubt as "snap:o
     </rdfs:subPropertyOf>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="hasInherent">
-    <rdfs:range rdf:resource="http://www.ifomis.org/bfo/1.0/snap#DependentContinuant"/>
-    <rdfs:domain rdf:resource="http://www.ifomis.org/bfo/1.0/snap#IndependentContinuant"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >For performance reasons, inverse relations are not encoded as such in OWL.</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Inverse relation of inheresIn. Relates an independent continuant to a dependent one (e.g. quality, state, function, or disposition)</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.ifomis.org/bfo/1.0/snap#DependentContinuant"/>
+    <rdfs:domain rdf:resource="http://www.ifomis.org/bfo/1.0/snap#IndependentContinuant"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#inheresIn">
+    <rdfs:domain rdf:resource="http://www.ifomis.org/bfo/1.0/snap#DependentContinuant"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >For performance reasons, inverse relations are not encoded as such in OWL.</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >inverse of hasInherent</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >inheresIn relates a dependent continuant (a state, quality, property, function, disposition) with the independent continuant it depends on.</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.ifomis.org/bfo/1.0/snap#DependentContinuant"/>
     <rdfs:range rdf:resource="http://www.ifomis.org/bfo/1.0/snap#IndependentContinuant"/>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPatient">
+    <rdfs:subPropertyOf rdf:resource="http://www.ifomis.org/obo/ro/1.0/light#hasParticipant"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="grainOf">
-    <rdfs:range rdf:resource="#CollectiveObject"/>
-    <rdfs:domain rdf:resource="http://www.ifomis.org/bfo/1.0/snap#IndependentContinuant"/>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >For performance reasons, inverse relations are not encoded as such in OWL.</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Inverse relation to hasGrain.</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Definition: Grains are the constitutent parts of Pluralities. They are of the same sort. Generally pluralities have a high number of grains. The loss of a grain has no effect on the sortality of the identity of the plurality.</rdfs:comment>
+    <rdfs:range rdf:resource="#CollectiveObject"/>
+    <rdfs:domain rdf:resource="http://www.ifomis.org/bfo/1.0/snap#IndependentContinuant"/>
     <rdfs:subPropertyOf>
       <owl:TransitiveProperty rdf:about="http://www.ifomis.org/obo/ro/1.0/light#properPartOf"/>
     </rdfs:subPropertyOf>
